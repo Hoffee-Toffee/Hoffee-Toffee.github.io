@@ -1,4 +1,4 @@
-[submodule "dead-space"]
-	path = dead-space
-	url = https://github.com/transit-lumber/dead-space.git
+[submodule "Dead-Space"]
+	path = Dead-Space
+	url = https://github.com/Transit-Lumber/Dead-Space.git
 	branch = main
