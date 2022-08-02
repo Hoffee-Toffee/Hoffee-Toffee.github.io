@@ -2,6 +2,6 @@
 	path = Dead-Space
 	url = https://github.com/Transit-Lumber/Dead-Space.git
 	branch = main
-[submodule "supes"]
+[submodule "SupeMaps"]
 	path = supedb
 	url = https://github.com/Transit-Lumber/supedb.git
