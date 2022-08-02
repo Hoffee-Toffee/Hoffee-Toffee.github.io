@@ -2,9 +2,6 @@
 	path = Dead-Space
 	url = https://github.com/Transit-Lumber/Dead-Space.git
 	branch = main
-[submodule "Timelines"]
-	path = Timelines
-	url = https://github.com/Transit-Lumber/supedb.git
-[submodule "supedb"]
+[submodule "supes"]
 	path = supedb
 	url = https://github.com/Transit-Lumber/supedb.git
