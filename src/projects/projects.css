@@ -1,0 +1,112 @@
+/* ===== ------------ ===== */
+/* =====   PROJECTS   ===== */
+/* ===== ------------ ===== */
+
+body > h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition-duration: 0.5s;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw + -5em);
+    height: fit-content;
+    min-height: 20em;
+    animation: fadein 2s;
+    border: #FFFFFF88 1px solid;
+    border-radius: 1em;
+    margin-bottom: 2em;
+    opacity: 0.7;
+    transition-duration: 0.25s;
+    color: white;
+    text-decoration: none;
+}
+
+.project:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.project h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-blue-lightest);
+    text-align: center;
+    transition-duration: 0.25s;
+}
+
+.project h3::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color:#FFA50088;
+    transition: 0.25s;
+    position: relative;
+    top: 0.25em;
+    left: 0;
+}
+
+.project:hover h3::after {
+    width: calc(100% + 1em);
+    height: 1px;
+    left: -0.5em;
+}
+
+.project p {
+    transition: 0.25s;
+    padding: 0 1em;
+}
+
+.project iframe {
+    width: calc(100% - 2em);
+    height: 100%;
+    border: none;
+    margin-bottom: 1em;
+    pointer-events: none;
+}
+
+.project img {
+    /* Don't stretch when resizing to fill */
+    object-fit: contain;
+    width: calc(100% - 2em);
+    height: 8em;
+    border: solid 1px white;
+    margin-bottom: 1em;
+}
+
+/* Desktop: Show two projects in each column 
+The first child will be on it's own however*/
+@media screen and (min-width: 800px) {
+    #projects {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .project {
+        width: 40%;
+        margin: 1em;
+    }
+}
