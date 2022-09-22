@@ -1,10 +1,14 @@
 // Get all my starred repos from my GitHub account
 // and add them to the 'projects' div
 
-// Use https://api.github.com/users/Transit-Lumber/starred to get all the repositories starred by Transit-Lumber
+// Will get all the repositories by Transit-Lumber
+// The featured projects section will contain all my repos that I have starred
+// The other repos section will contain all my repos that I have not starred
+
 // Will later check if the repo is mine and if it is, add it to the projects div (unless it's this repo)
 
-var projects = document.getElementById("projects");
+var featured_projects = document.getElementById("featured");
+var other_projects = document.getElementById("other");
 
 var request = new XMLHttpRequest();
 request.open(
@@ -67,7 +71,7 @@ request.onload = function () {
                 this.remove();
             }
 
-            projects.appendChild(project);
+            featured_projects.appendChild(project);
         }
     } else {
         // We reached our target server, but it returned an error
@@ -81,13 +85,78 @@ request.onload = function () {
         }, 500);
     }
 
-    // Fade out the loading icon (transition is 0.5s)
-    document.getElementById("loading-projects").style.opacity = "0";
+    var starred_repos = data.map(function (repo) { return repo.full_name; });
 
-    // Remove the loading icon after the transition is done and fade in each project
-    setTimeout(function () {
-        document.getElementById("loading-projects").remove();
-    }, 500);
+    // Do the same thing for the other projects
+    var request2 = new XMLHttpRequest();
+    request2.open(
+        "GET",
+        "https://api.github.com/users/Transit-Lumber/repos",
+        true
+    );
+
+    request2.onload = function () {
+        if (request2.status >= 200 && request2.status < 400) {
+            // Success!
+            var data = JSON.parse(request2.responseText);
+
+            // Filter out the repos that are starred
+            data = data.filter(function (repo) { return !starred_repos.includes(repo.full_name); });
+
+            // Sort the data into the order of 'updated_at'
+            data.sort(function (a, b) {
+                return new Date(b.updated_at) - new Date(a.updated_at);
+            });
+
+            for (var i = 0; i < data.length; i++) {
+                var repo = data[i];
+                // Don't show the 'transit-lumber.github.io' repository
+                if (
+                    repo.name == "Transit-Lumber.github.io"
+                ) {
+                    continue;
+                }
+
+                // Project Link (whole card is the link)
+                var project = document.createElement("a");
+                project.id = repo.name;
+                project.className = "project";
+                project.href = repo.html_url;
+                project.target = "_blank";
+
+                // Project Title (H3)
+                var title = document.createElement("h3");
+                title.innerHTML = repo.name;
+                project.appendChild(title);
+
+                // Project Description
+                var description = document.createElement("p");
+                description.innerHTML = repo.description;
+                project.appendChild(description);
+
+                other_projects.appendChild(project);
+            }
+        } else {
+            // We reached our target server, but it returned an error
+            console.log("error");
+        }
+        
+        // Fade out the loading icon (transition is 0.5s)
+        document.getElementById("loading-projects").style.opacity = "0";
+        document.getElementsByTagName("h1")[2].style.opacity = "1";
+
+        // Remove the loading icon after the transition is done and fade in each project
+        setTimeout(function () {
+            document.getElementById("loading-projects").remove();
+        }, 500);
+    }.bind(starred_repos);
+
+    request2.onerror = function () {
+        // There was a connection error of some sort
+        console.log("error");
+    }
+
+    request2.send();
 };
 request.onerror = function () {
     // There was a connection error of some sort

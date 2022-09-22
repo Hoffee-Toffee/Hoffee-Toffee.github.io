@@ -12,7 +12,7 @@ body > h1 {
     margin-bottom: 1em;
 }
 
-#projects {
+.projects {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +20,12 @@ body > h1 {
     width: 100%;
     height: 100%;
     transition-duration: 0.5s;
+}
+
+h1:nth-of-type(2) {
+    opacity: 0;
+    animation: fadein 2s;
+    margin-top: 1em;
 }
 
 .project {
@@ -99,7 +105,7 @@ body > h1 {
 /* Desktop: Show two projects in each column 
 The first child will be on it's own however*/
 @media screen and (min-width: 800px) {
-    #projects {
+    .projects {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-evenly;
