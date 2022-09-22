@@ -37,8 +37,8 @@ request.onload = function () {
                 continue;
             }
 
-            // Project Link (whole card is the link)
-            var project = document.createElement("a");
+            // Project Card (div)
+            var project = document.createElement("div");
             project.id = repo.name;
             project.className = "project";
             project.href = repo.html_url;
@@ -70,6 +70,24 @@ request.onload = function () {
                 this.parentNode.appendChild(embed);
                 this.remove();
             }
+
+            // Add a link to the project repo and a link to the live project
+            var links = document.createElement("div");
+            links.className = "project-links";
+
+            var repo_link = document.createElement("a");
+            repo_link.href = repo.html_url;
+            repo_link.target = "_blank";
+            repo_link.innerHTML = "View Repo";
+
+            var live_link = document.createElement("a");
+            live_link.href = "/" + repo.name + "/index.html";
+            live_link.target = "_blank";
+            live_link.innerHTML = "Run Repo";
+
+            links.appendChild(repo_link);
+            links.appendChild(live_link);
+            project.appendChild(links);
 
             featured_projects.appendChild(project);
         }
@@ -117,7 +135,7 @@ request.onload = function () {
                     continue;
                 }
 
-                // Project Link (whole card is the link)
+                // Project Card (whole card is the link)
                 var project = document.createElement("a");
                 project.id = repo.name;
                 project.className = "project";

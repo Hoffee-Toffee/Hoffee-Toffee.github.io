@@ -10,6 +10,23 @@
     --color-blue-light: #2a6e82;
     --color-blue-lighter: #3c8ea4;
     --color-blue-lightest: #4eaec6;
+
+    --color-green-darkest: #1a2b1a;
+    --color-green-darker: #1f3a1f;
+    --color-green-dark: #234723;
+    --color-green: #2a5f2a;
+    --color-green-light: #3c7f3c;
+    --color-green-lighter: #4e9e4e;
+    --color-green-lightest: #60be60;
+
+
+    --color-orange-darkest: #711e00;
+    --color-orange-darker: #8a2e00;
+    --color-orange-dark: #a33e00;
+    --color-orange: #bc4e00;
+    --color-orange-light: #d55e00;
+    --color-orange-lighter: #ee6e00;
+    --color-orange-lightest: #ff7e00;
 }
 
 @keyframes fadein {
