@@ -256,11 +256,7 @@ header h1 {
 
 header nav a {
     color: white;
-    text-shadow: 2px 2px 0px #00000088,
-                 0px 0px 10px #44444477,
-                 0px 0px 20px #88888866,
-                 0px 0px 30px #cccccc55,
-                 0px 0px 40px #ffffff44;
+    text-shadow: none;
     text-decoration: none;
     font-size: 1.5em;
     transition: 0.25s;
@@ -268,11 +264,11 @@ header nav a {
 
 header nav a:hover {
     color: var(--color-blue-white);
-    text-shadow: 0px 0px 10px black,
-                 0px 0px 20px black,
-                 0px 0px 30px black,
-                 0px 0px 40px black;
-    transform: scale(1.1);
+    text-shadow: 2px 2px 0px #00000088,
+                 0px 0px 10px #44444477,
+                 0px 0px 20px #88888866,
+                 0px 0px 30px #cccccc55,
+                 0px 0px 40px #ffffff44;
 }
 
 /* ===== ---------- ===== */
@@ -435,7 +431,8 @@ footer span a:hover {
     left: 50%;
     font-size: 2.5em;
     color: #ffffff55;
-    animation: scroll-indicator 3s infinite;
+    animation: scroll-indicator 5s infinite ease-in-out;
+    text-shadow: var(--color-blue-darkest) 0px 0px 10px;
 }
 
 @keyframes scroll-indicator {
@@ -448,8 +445,8 @@ footer span a:hover {
         transform: translate(-50%, -75%);
     }
     50% {
-        text-shadow: 0 0 10px black;
         transform: translate(-50%, -25%);
+        opacity: 1;
     }
     75% {
         opacity: 0;
@@ -460,7 +457,6 @@ footer span a:hover {
         transform: translate(-50%, -75%);
     }
 }
-
 
 @media (min-width: 600px) {
     #hamburger {
