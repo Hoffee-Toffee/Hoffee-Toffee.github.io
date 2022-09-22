@@ -133,7 +133,7 @@ window.onload = function () {
             // Check if after the end of the parallax effect, don't apply to the last .content div
             else if (scrollPosition > div.parentNode.offsetTop + div.parentNode.offsetHeight - viewportHeight / 2 && div != divs[divs.length - 1]) {
                 div.style.top = "0";
-                div.style.visibility = "visible";
+                div.style.visibility = "hidden";
             }
         });
     };
