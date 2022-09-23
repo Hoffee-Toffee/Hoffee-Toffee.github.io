@@ -40,19 +40,29 @@ h1:nth-of-type(2) {
     border: #FFFFFF88 1px solid;
     border-radius: 1em;
     margin-bottom: 2em;
-    opacity: 0.7;
     transition-duration: 0.25s;
     color: white;
     text-decoration: none;
 }
 
-#featured .project {
-    opacity: 1;
-    transform: scale(1.05);
+#other .project {
+    min-height: 5em;
+}
+
+#other .project h3 {
+    margin: 0.5em 0em;
+}
+
+#other .project h3::after {
+    display: none;
+}
+
+#other .project p:empty {
+    /* Hide empty paragraphs so there isn't a gap */
+    display: none;
 }
 
 #other .project:hover {
-    opacity: 1;
     transform: scale(1.05);
     cursor: pointer;
 }
@@ -65,6 +75,7 @@ h1:nth-of-type(2) {
     color: var(--color-blue-lightest);
     text-align: center;
     transition-duration: 0.25s;
+    margin-top: 0.5em;
 }
 
 .project h3::after {
@@ -89,6 +100,11 @@ h1:nth-of-type(2) {
 .project p {
     transition: 0.25s;
     padding: 0 1em;
+    height: 2em;
+    /* Vertical centered text */
+    display: flex;
+    align-items: center;
+    
 }
 
 .project iframe {
@@ -139,10 +155,6 @@ h1:nth-of-type(2) {
 .project-links a:hover {
     background-color: #FFFFFF00;
     transform: scale(1.05);
-}
-
-.other .project {
-
 }
 
 /* Desktop: Show two projects in each column 

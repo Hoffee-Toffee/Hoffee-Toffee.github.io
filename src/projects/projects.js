@@ -157,6 +157,15 @@ request.onload = function () {
         } else {
             // We reached our target server, but it returned an error
             console.log("error");
+
+            // Fade out the loading icon (transition is 0.5s)
+            document.getElementById("loading-projects").style.opacity = "0";
+
+            // Remove the loading icon after the transition is done
+            setTimeout(function () {
+                document.getElementById("loading-projects").remove();
+            }, 500);
+
         }
         
         // Fade out the loading icon (transition is 0.5s)
@@ -172,6 +181,14 @@ request.onload = function () {
     request2.onerror = function () {
         // There was a connection error of some sort
         console.log("error");
+
+        // Fade out the loading icon (transition is 0.5s)
+        document.getElementById("loading-projects").style.opacity = "0";
+
+        // Remove the loading icon after the transition is done
+        setTimeout(function () {
+            document.getElementById("loading-projects").remove();
+        }, 500);
     }
 
     request2.send();
