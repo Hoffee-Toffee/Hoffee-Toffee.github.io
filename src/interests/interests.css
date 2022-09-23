@@ -30,6 +30,35 @@ footer {
     margin-left: -1.5em;
 }
 
+.interest .interest-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.interest-links a {
+    background-color: #000000AA;
+    color: var(--color-green-light);
+    text-decoration: none;
+    transition: 0.1s ease-in-out;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0 0 0.5em #FFFFFF22;
+    border: 1px solid var(--color-green-dark);
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    margin: 0.5em;
+}
+
+.interest-links a:hover {
+    background-color: #000000;
+    transform: scale(1.05);
+    color: var(--color-green-lightest);
+    border: 1px solid var(--color-green-lightest);
+}
+
 .interest,
 .title-card {
     margin: 0;
@@ -77,15 +106,6 @@ footer {
     background-color: #00000066;
 }
 
-#interests #programming::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
 #interests #ai {
     background-image: url('./images/gandr-collage.jpg');
     background-blend-mode: multiply;
@@ -121,7 +141,7 @@ footer {
 }
 
 .fg-img {
-    z-index: 1;
+    z-index: -1;
     position: absolute;
 }
 
@@ -137,7 +157,6 @@ footer {
     min-width: 600px;
     top: 0;
     left: 0;
-    z-index: -1;
 }
 
 #marvel #tony-stark {
