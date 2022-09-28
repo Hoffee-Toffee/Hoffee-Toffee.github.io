@@ -113,7 +113,17 @@ footer {
 }
 
 #interests #space {
-    background-image: url('./images/space.jpg');
+    background-image: url('./images/saturn.png');
+}
+
+#interests #star-trek {
+    background-image: url('./images/ds9.jpg');
+}
+
+#interests #games {
+    background-image: url('./images/obra-dinn.jpg');
+    background-blend-mode: multiply;
+    background-color: #00000088;
 }
 
 @keyframes tilt {
@@ -204,7 +214,6 @@ footer {
     left: 0;
 }
 
-
 .interest .content {
     position: absolute;
     top: 50%;
@@ -225,4 +234,18 @@ footer {
     transform: translateX(-50%);
     margin-left: 1em;
     margin-right: 0;
+}
+
+@media (max-width: 750px) {
+    .interest .content,
+    .interest:nth-child(2n + 1) .content {
+        transform: translateX(0%);
+        margin: 0 1em;
+        left: 0;
+        right: 0;
+    }
+
+    .fg-img {
+        display: none;
+    }
 }
