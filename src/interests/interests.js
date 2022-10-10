@@ -17,7 +17,7 @@ window.onload = function () {
 
         // Remove all elements from the array that are not visible
         fgImgs = fgImgs.filter(function (element) {
-            return element.getBoundingClientRect().top < viewportHeight;
+            return element.getBoundingClientRect().top < viewportHeight && element.getBoundingClientRect().bottom > 0;
         });
 
         // Style the remaining elements according to their group or id
@@ -69,18 +69,16 @@ window.onload = function () {
         }
 
         if (fgImgs.includes(document.getElementById("starship"))) { // SpaceX Starship
-            // Same as Stark, except that it moves at a faster rate and shrinks slightly as it moves down
+            // Similar to Stark
             var fgImg = document.getElementById("starship");
             // Down-in & Up-out & Down-out & Up-in
             if (scrollPosition >= (viewportHeight * 2.5 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight * 2.5 + fgImg.offsetHeight * 1.5)) {
                 var changeInPosition = scrollPosition / 2 - fgImg.offsetHeight;
                 fgImg.style.top = -changeInPosition + "px";
-                fgImg.style.width = 100 - (scrollPosition - (viewportHeight * 2.5 - fgImg.offsetHeight / 2)) / (fgImg.offsetHeight / 2) * 10 + "%";
             }
             // Above
             else if (scrollPosition < (viewportHeight * 2.5 - fgImg.offsetHeight / 2)) {
                 fgImg.style.top = "0px";
-                fgImg.style.width = "100%";
             }
         }
 
