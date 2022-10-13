@@ -244,9 +244,9 @@ header h1 {
     display: none;
 }
 
-#nav-toggle:checked ~ nav {
+/* #nav-toggle:checked ~ nav {
     opacity: 1;
-}
+} */
 
 #hamburger {
     position: fixed;
@@ -270,6 +270,48 @@ header h1 {
     transition: 0.25s ease-in;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
+
+
+/* ≡ -> ⨉ (Cross Transition) */
+/* #nav-toggle:checked ~ #hamburger .bar:nth-child(1) {
+    transform: translateY(8.5px) rotate(135deg);
+}
+
+#nav-toggle:checked ~ #hamburger .bar:nth-child(2) {
+    transform: translateX(-50%) scaleX(0);
+    opacity: 0;
+}
+
+#nav-toggle:checked ~ #hamburger .bar:nth-child(3) {
+    transform: translateY(-8.5px) rotate(-135deg);
+} */
+
+/* ≡ -> - (Minus Transition) */
+#nav-toggle:checked ~ #hamburger .bar:nth-child(1) {
+    transform: translateY(8.5px);
+}
+
+#nav-toggle:checked ~ #hamburger .bar:nth-child(2) {
+    transform: scale(0);
+}
+
+#nav-toggle:checked ~ #hamburger .bar:nth-child(3) {
+    transform: translateY(-8.5px);
+}
+
+/* ≡ -> ∨ (Down Chevron Transition) */
+/* #nav-toggle:checked ~ #hamburger .bar:nth-child(1) {
+    transform: translateY(18.5px) rotate(135deg) scaleX(0.5) translateX(-40%);
+}
+
+#nav-toggle:checked ~ #hamburger .bar:nth-child(2) {
+    transform: translateY(10px) scaleX(0);
+    opacity: 0;
+}
+
+#nav-toggle:checked ~ #hamburger .bar:nth-child(3) {
+    transform: translateY(1.5px) rotate(45deg) scaleX(0.5) translateX(-40%);
+} */
 
 header nav a {
     color: white;
@@ -438,7 +480,6 @@ footer span a:hover {
     left: calc(50% - 40px);
     width: 80px;
     height: 80px;
-
 }
 
 .scroll-indicator i {
@@ -448,7 +489,7 @@ footer span a:hover {
     left: 50%;
     font-size: 2.5em;
     color: #ffffff55;
-    animation: scroll-indicator 5s infinite ease-in-out;
+    animation: scroll-indicator 3s infinite ease-in-out;
     text-shadow: var(--color-blue-darkest) 0px 0px 10px;
 }
 
@@ -457,21 +498,17 @@ footer span a:hover {
         opacity: 0;
         transform: translate(-50%, -75%);
     }
-    25% {
+    40% {
         opacity: 1;
         transform: translate(-50%, -75%);
     }
-    50% {
+    80% {
         transform: translate(-50%, -25%);
         opacity: 1;
-    }
-    75% {
-        opacity: 0;
-        transform: translate(-50%, -25%);
     }
     100% {
         opacity: 0;
-        transform: translate(-50%, -75%);
+        transform: translate(-50%, -25%);
     }
 }
 

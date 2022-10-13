@@ -34,18 +34,18 @@ window.onload = function () {
             // Down-in & Up-out
             if (scrollPosition >= (viewportHeight / 2 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight / 2 + fgImg.offsetHeight / 2)) {
                 var changeInPosition = scrollPosition / 2 - fgImg.offsetHeight / 2;
-                fgImg.style.top = -changeInPosition + "px";
+                fgImg.style.transform = "translateY(" + -changeInPosition + "px)";
                 fgImg.style.opacity = 1;
             }
             // Above
             else if (scrollPosition < (viewportHeight / 2 - fgImg.offsetHeight / 2)) {
-                fgImg.style.top = "0px";
+                fgImg.style.transform = "translateY(0px)";
                 fgImg.style.opacity = 1;
             }
             // Down-out & Up-in
             else if (scrollPosition > (viewportHeight / 2 + fgImg.offsetHeight / 2) && scrollPosition < (viewportHeight / 2 + fgImg.offsetHeight)) {
                 fgImg.style.opacity = 1 - (scrollPosition - (viewportHeight / 2 + fgImg.offsetHeight / 2)) / (fgImg.offsetHeight / 2);
-                fgImg.style.top = "0px";
+                fgImg.style.transform = "translateY(0px";
             }
             // Below
             else if (scrollPosition > (viewportHeight / 2 + fgImg.offsetHeight)) {
@@ -60,25 +60,53 @@ window.onload = function () {
             // Down-in & Up-out & Down-out & Up-in
             if (scrollPosition >= (viewportHeight * 1.5 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight * 1.5 + fgImg.offsetHeight * 1.5)) {
                 var changeInPosition = scrollPosition / 2 - fgImg.offsetHeight;
-                fgImg.style.top = -changeInPosition + "px";
+                fgImg.style.transform = "translateY(" + -changeInPosition + "px)";
             }
             // Above
             else if (scrollPosition < (viewportHeight * 1.5 - fgImg.offsetHeight / 2)) {
-                fgImg.style.top = "0px";
+                fgImg.style.transform = "translateY(0px)";
             }
         }
 
-        if (fgImgs.includes(document.getElementById("starship"))) { // SpaceX Starship
-            // Similar to Stark
-            var fgImg = document.getElementById("starship");
+        if (fgImgs.includes(document.getElementById("github"))) { // Github
+            // Like Stark
+            var fgImg = document.getElementById("github");
             // Down-in & Up-out & Down-out & Up-in
-            if (scrollPosition >= (viewportHeight * 2.5 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight * 2.5 + fgImg.offsetHeight * 1.5)) {
-                var changeInPosition = scrollPosition / 2 - fgImg.offsetHeight;
-                fgImg.style.top = -changeInPosition + "px";
+            if (scrollPosition >= (viewportHeight * 2.5 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight * 2.5 + fgImg.offsetHeight * 2.5)) {
+                var changeInPosition = scrollPosition / 3 - fgImg.offsetHeight;
+                fgImg.style.transform = "translateY(" + -changeInPosition + "px)";
             }
             // Above
             else if (scrollPosition < (viewportHeight * 2.5 - fgImg.offsetHeight / 2)) {
-                fgImg.style.top = "0px";
+                fgImg.style.transform = "translateY(0px)";
+            }
+        }
+
+        if (fgImgs.includes(document.getElementById("neuralink-robot"))) { // Neuralink Robot
+            // Like Stark
+            var fgImg = document.getElementById("neuralink-robot");
+            // Down-in & Up-out & Down-out & Up-in
+            if (scrollPosition >= (viewportHeight * 3.5 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight * 3.5 + fgImg.offsetHeight * 2.5)) {
+                var changeInPosition = scrollPosition / 4 - fgImg.offsetHeight;
+                fgImg.style.transform = "translateY(" + -changeInPosition + "px";
+            }
+            // Above
+            else if (scrollPosition < (viewportHeight * 3.5 - fgImg.offsetHeight / 2)) {
+                fgImg.style.transform = "translateY(0px)";
+            }
+        }
+
+        if (fgImgs.includes(document.getElementById("starship"))) { // Starship
+            // Like Stark
+            var fgImg = document.getElementById("starship");
+            // Down-in & Up-out & Down-out & Up-in
+            if (scrollPosition >= (viewportHeight * 4.5 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight * 4.5 + fgImg.offsetHeight * 2.5)) {
+                var changeInPosition = scrollPosition / 5 - fgImg.offsetHeight;
+                fgImg.style.transform = "translateY(" + -changeInPosition + "px)";
+            }
+            // Above
+            else if (scrollPosition < (viewportHeight * 4.5 - fgImg.offsetHeight / 2)) {
+                fgImg.style.transform = "translateY(0px)";
             }
         }
 
@@ -121,7 +149,7 @@ window.onload = function () {
                 var changeInPosition = scrollPosition - div.parentNode.offsetTop - viewportHeight / 2 + div.offsetHeight / 2;
 
                 // Change the position of the div
-                div.style.top = -changeInPosition + "px";
+                div.style.transform = "translateY(" + -changeInPosition + "px)";
                 div.style.visibility = "visible";
             }
             // Check if before the start of the parallax effect
@@ -130,7 +158,7 @@ window.onload = function () {
             }
             // Check if after the end of the parallax effect, don't apply to the last .content div
             else if (scrollPosition > div.parentNode.offsetTop + div.parentNode.offsetHeight - viewportHeight / 2 && div != divs[divs.length - 1]) {
-                div.style.top = "0";
+                div.style.transform = "translateY(0)";
                 div.style.visibility = "hidden";
             }
         });

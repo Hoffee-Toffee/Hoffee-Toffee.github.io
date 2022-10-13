@@ -62,10 +62,6 @@ footer {
 .interest,
 .title-card {
     margin: 0;
-}
-
-.interest,
-.title-card {
     width: 100vw;
     height: 100vh;
     background-color: transparent;
@@ -80,12 +76,14 @@ footer {
     background-position: center;
     background-repeat: no-repeat;
     animation: tilt 60s infinite ease-in-out;
+}
 
+.title-card {
+    text-align: center;
 }
 
 #interests .interest:nth-child(2n + 1) {
     animation: reverse-tilt 60s infinite ease-in-out;
-
 }
 
 #interests #dead-space {
@@ -103,7 +101,23 @@ footer {
 #interests #programming {
     background-image: url('./images/processor.jpg');
     background-blend-mode: multiply;
-    background-color: #00000066;
+    animation: color-cycle 20s infinite linear;
+}
+
+@keyframes color-cycle {
+    0% {
+        background-color: #FF000033;
+    }
+    33% {
+        background-color: #00FF0033;
+    }
+    66% {
+        background-color: #0000FF33;
+    }
+    100% {
+        background-color: #FF000033;
+    }
+
 }
 
 #interests #ai {
@@ -123,7 +137,7 @@ footer {
 #interests #games {
     background-image: url('./images/obra-dinn.jpg');
     background-blend-mode: multiply;
-    background-color: #00000088;
+    animation: color-cycle 20s infinite linear;
 }
 
 @keyframes tilt {
@@ -153,6 +167,7 @@ footer {
 .fg-img {
     z-index: -1;
     position: absolute;
+    overflow-x: hidden;
 }
 
 #dead-space #isaac-clarke {
@@ -203,63 +218,50 @@ footer {
     top: 25%
 }
 
+/* #programming #github {
+    background-image: url('./images/github.png');
+    width: 25vw;
+    height: 100vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 10vw;
+} */
+
+/* #ai #neuralink-robot {
+    background-image: url('./images/o-block.png');
+    width: 100vw;
+    height: 100vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 0;
+} */
+
 #space #starship {
     background-image: url('./images/starship.png');
-    width: 30vw;
-    height: 30vh;
-    background-size: contain;
-    background-position: 100% center;
+    width: 100vw;
+    height: 100vh;
+    background-size: 40%;
+    background-position: center;
     background-repeat: no-repeat;
-    animation: position 10s infinite cubic-bezier(0.47, 0, 0.745, 0.715);
+    animation: position 60s infinite cubic-bezier(0.5, 0, 1, 1);
 }
 
-@keyframes positions {
+@keyframes position {
     0% {
-        transform: translate(-75vw, 15vh) scale(1);
+        transform: translate(-70vw, 15vh) scale(1);
     }
     100% {
-        transform: translate(75vw, -15vh) scale(0.5);
-    }
-}
-
-#space #starship::after {
-    content: "";
-    /* Will be the blue exhaust */
-    position: absolute;
-    filter: blur(0.5em);
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent 0%, var(--color-blue-darkest) 50%, #ffffff55 100%);
-    right: calc(100% - 2.5em);
-    transform: rotateZ(-10deg);
-    top: 3.5vw;
-    /* Cut into a triangle shape (with the tip cut off) */
-    clip-path: polygon(0 0, 100% 47%, 100% 52%, 0 100%);
-    z-index: -1;
-    animation: exhaust 5s infinite ease-in-out;
-}
-
-@keyframes exhaust {
-    0% {
-        opacity: 0.2;
-        transform: rotateZ(-10deg) scale(1);
-    }
-    50% {
-        opacity: 0.1;
-        transform: rotateZ(-10deg) scale(1.25);
-    }
-    100% {
-        opacity: 0.2;
-        transform: rotateZ(-10deg) scale(1);
+        transform: translate(70vw, -15vh) scale(0.5);
     }
 }
 
 .interest .content {
     position: absolute;
-    top: 50%;
-    right: 25%;
-    left: 25%;
-    transform: translateX(50%);
+    right: 0%;
+    left: 50%;
+    top: 0%;
     font-family: 'Roboto', sans-serif;
     color: white;
     text-align: center;
@@ -271,7 +273,8 @@ footer {
 }
 
 .interest:nth-child(2n + 1) .content {
-    transform: translateX(-50%);
+    right: 50%;
+    left: 0%;
     margin-left: 1em;
     margin-right: 0;
 }
