@@ -1,4 +1,7 @@
-window.onload = function () {
+// Add all the js event listeners once the page has loaded
+// But you also have to make sure the 'onload' event doesn't overwrite the default 'onload' event
+
+var loadFunc = function() {
     var interests = document.getElementById("interests");
     interests.style.paddingRight = interests.offsetWidth - interests.clientWidth + "px";
 
@@ -164,3 +167,14 @@ window.onload = function () {
         });
     };
 };
+
+// Run the function when the page loads, but after the default onload function has run
+
+var oldFunc = window.onload;
+
+window.onload = function () {
+    if (typeof oldFunc === 'function') {
+        oldFunc();
+    }
+    loadFunc();
+}
