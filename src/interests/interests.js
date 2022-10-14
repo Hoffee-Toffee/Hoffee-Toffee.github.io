@@ -139,8 +139,9 @@ var loadFunc = function() {
         // Get all .content divs in the 'interests' element as an array
         var divs = Array.from(this.getElementsByClassName("content"));
 
-        // Remove the first .content div (the title)
+        // Remove the first and last .content div (the start and end markers)
         divs.shift();
+        divs.pop();
 
         // Loop through each .content div
         divs.forEach(function (div) {
