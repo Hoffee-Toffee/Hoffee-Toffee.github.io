@@ -1,6 +1,6 @@
 // Show custom error message if applicable
 
-window.onload = function () {
+var loadFunc = function () {
   // Get the 'message' parameter from the URL
   var urlParams = new URLSearchParams(window.location.search);
   console.log(urlParams);
@@ -15,3 +15,14 @@ window.onload = function () {
     document.getElementById("error-message").innerHTML = message;
   }
 };
+
+// Run the function when the page loads, but after the default onload function has run
+
+var oldFunc = window.onload;
+
+window.onload = function () {
+    if (typeof oldFunc === 'function') {
+        oldFunc();
+    }
+    loadFunc();
+}
