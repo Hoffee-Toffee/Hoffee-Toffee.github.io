@@ -195,27 +195,64 @@ header::after {
 
 header nav {
     height: 100vh;
-    top: 4em;
-    padding: 0 1em;
+    top: 0em;
+    padding: 1em;
+    padding-top: 4em;
     position: absolute;
-    width: 5em;
+    width: 7em;
     transition: 0.25s ease-in;
-    animation: light-lines 5s linear infinite;
-    background: var(--color-blue-darkest);
     background: repeating-linear-gradient(
-        rgba(0,0,0,1) 0px,
-        rgba(0,0,0,1) 2px,
-        rgba(0,0,0,0) 2px,
-        rgba(0,0,0,0) 4px);
-    box-shadow: 0 0 20px 20px rgb(0 0 0) inset;
+        black 0px,
+        black 2px,
+        transparent 2px,
+        transparent 4px);
+    animation: lines 5s linear infinite;
     opacity: 0;
+    right: -7em;
+    z-index: 1;
+    text-align: right;
+    box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
+}
+
+header nav::after {
+    content: "";
+    position: fixed;
+    top: 0;
     right: 0;
+    width: 8em;
+    height: 100vh;
+    background: linear-gradient(
+        to left,
+        black 0%,
+        transparent 100%);
+    pointer-events: none;
+    transition: 0.25s ease-in;
 }
 
 header nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+header nav ul li {
+    margin: 0.5em 0;
+}
+
+header nav ul li::after { /* This is the underline that appears when you hover over a link */
+    content: "";
+    display: block;
+    margin-left: 100%;
+    width: 0;
+    height: 2px;
+    transition: 0.25s;
+    background-color: var(--color-green);
+}
+
+header nav ul li:hover::after { 
+    width: 100%;
+    transition: width 0.25s;
+    margin-left: 0%;
 }
 
 header h1 {
@@ -240,13 +277,43 @@ header h1 {
     z-index: 0;
 }
 
-#nav-toggle {
-    display: none;
+nav::before { /* This will add a black, semi-transparent layer over the site body when the mobile menu is open */
+    content: "";
+    position: absolute;
+    left: -100vw;
+    top: 0;
+    width: calc(100vw);
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.25s ease-in;
+    pointer-events:bounding-box;
 }
 
-/* #nav-toggle:checked ~ nav {
+#nav-toggle {
+    display: none;
+    right: 0;
+}
+
+#nav-toggle:checked ~ nav {
     opacity: 1;
-} */
+    right: 0;
+}
+
+#nav-toggle:checked ~ nav::before {
+    visibility: visible;
+    opacity: 1;
+}
+
+#nav-toggle:checked ~ nav::after {
+    right: 9em;
+}
+
+#nav-toggle:checked ~ nav ul li::after {
+    display: none;
+}
 
 #hamburger {
     position: fixed;
@@ -261,19 +328,19 @@ header h1 {
     height: 20px;
     cursor: pointer;
     color: white;
+    z-index: 2;
 }
 
 #hamburger .bar {
     width: 100%;
     height: 3px;
     background: white;
-    transition: 0.25s ease-in;
+    transition: 0.25s ease-in-out;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
-
 /* ≡ -> ⨉ (Cross Transition) */
-/* #nav-toggle:checked ~ #hamburger .bar:nth-child(1) {
+#nav-toggle:checked ~ #hamburger .bar:nth-child(1) {
     transform: translateY(8.5px) rotate(135deg);
 }
 
@@ -284,10 +351,10 @@ header h1 {
 
 #nav-toggle:checked ~ #hamburger .bar:nth-child(3) {
     transform: translateY(-8.5px) rotate(-135deg);
-} */
+}
 
 /* ≡ -> - (Minus Transition) */
-#nav-toggle:checked ~ #hamburger .bar:nth-child(1) {
+/* #nav-toggle:checked ~ #hamburger .bar:nth-child(1) {
     transform: translateY(8.5px);
 }
 
@@ -297,7 +364,7 @@ header h1 {
 
 #nav-toggle:checked ~ #hamburger .bar:nth-child(3) {
     transform: translateY(-8.5px);
-}
+} */
 
 /* ≡ -> ∨ (Down Chevron Transition) */
 /* #nav-toggle:checked ~ #hamburger .bar:nth-child(1) {
@@ -347,7 +414,6 @@ footer {
         transparent 4px);
     animation: lines 5s linear infinite;
     box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
-    z-index: 1;
 }
 
 footer::after {
@@ -530,7 +596,7 @@ footer span a:hover {
     }
 
     header nav ul {
-        margin-top: 1em;
+        margin-top: -3em;
         display: flex;
         flex-direction: row;
         height: 100%;
@@ -539,6 +605,10 @@ footer span a:hover {
 
     header nav ul li {
         margin: 0 1em;
+        
     }
 
+    header nav::after {
+        display: none;
+    }
 }
