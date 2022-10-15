@@ -260,7 +260,7 @@ footer {
     background-image: url('./images/starfleet-logo.png');
     width: 100vw;
     height: 100vh;
-    background-size: 40%;
+    background-size: contain, 40%;
     background-position: right;
     background-repeat: no-repeat;
     right: 1em;
@@ -312,7 +312,7 @@ footer {
     background-image: url('./images/memento.png');
     width: 100vw;
     height: 100vh;
-    background-size: 50%;
+    background-size: contain, 50%;
     background-position: right;
     background-repeat: no-repeat;
     right: 1em;
