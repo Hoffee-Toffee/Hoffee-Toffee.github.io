@@ -140,6 +140,18 @@ footer {
     animation: color-cycle 20s infinite linear;
 }
 
+#interests #movies-and-tv {
+    background-image: url('./images/tenet.jpg');
+    background-blend-mode: multiply;
+    background-color: #000000AA;
+}
+
+#interests #other {
+    background-image: url('./images/vsauce.jpg');
+    background-blend-mode: multiply;
+    background-color: #000000AA;
+}
+
 @keyframes tilt {
     0% {
         background-position: 25%;
@@ -195,30 +207,25 @@ footer {
     left: 0;
 }
 
-#marvel #doctor-strange {
-    background-image: url('./images/Doctor-Strange.png');
-
-    width: 100vw;
-    height: 100vh;
-    background-size: 15em;
-    background-position: 75% top;
-    background-repeat: no-repeat;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    opacity: 0;
-}
-
-#education #kurzgesagt-bird {
+#other #kurzgesagt-bird {
     height: 25%;
     width: 25%;
-    background: url("bird.gif") no-repeat center center;
+    background: url("./images/bird.gif") no-repeat center center;
     background-size: contain;
     left: 5%;
-    top: 25%
+    top: 10%
 }
 
-/* #programming #github {
+#other #kurzgesagt-black-hole {
+    height: 25%;
+    width: 25%;
+    background: url("./images/black-hole.gif") no-repeat center center;
+    background-size: contain;
+    left: 25%;
+    top: 60%
+}
+
+#programming #github {
     background-image: url('./images/github.png');
     width: 25vw;
     height: 100vh;
@@ -226,17 +233,18 @@ footer {
     background-position: center;
     background-repeat: no-repeat;
     left: 10vw;
-} */
+    opacity: 0.5;
+}
 
-/* #ai #neuralink-robot {
-    background-image: url('./images/o-block.png');
+#ai #neuralink-robot {
+    background-image: url('./images/neuralink-robot.png');
     width: 100vw;
     height: 100vh;
-    background-size: contain;
-    background-position: center;
+    background-size: 40%;
+    background-position: right;
     background-repeat: no-repeat;
-    left: 0;
-} */
+    right: 1em;
+}
 
 #space #starship {
     background-image: url('./images/starship.png');
@@ -248,12 +256,86 @@ footer {
     animation: position 60s infinite cubic-bezier(0.5, 0, 1, 1);
 }
 
+#star-trek #starfleet-logo {
+    background-image: url('./images/starfleet-logo.png');
+    width: 100vw;
+    height: 100vh;
+    background-size: 40%;
+    background-position: right;
+    background-repeat: no-repeat;
+    right: 1em;
+    filter: invert(1);
+    opacity: 0.75;
+}
+
+#tetronimos {
+    width: 100vw;
+    height: 100vh;
+}
+
+#tetronimos * {
+    width: 15%;
+    height: 15%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: rotate 30s infinite ease-in-out;
+}
+
+#games #l-block {
+    background-image: url('./images/l-block.png');
+    top: 5%;
+    left: 5%;
+}
+
+#games #o-block {
+    background-image: url('./images/o-block.png');
+    animation-delay: -5s;
+    top: 30%;
+    left: 30%;
+}
+
+#games #s-block {
+    background-image: url('./images/s-block.png');
+    animation-delay: -10s;
+    top: 60%;
+    left: 10%;
+}
+
+#games #t-block {
+    background-image: url('./images/t-block.png');
+    animation-delay: -15s;
+    top: 80%;
+    left: 25%;
+}
+
+#movies-and-tv #memento {
+    background-image: url('./images/memento.png');
+    width: 100vw;
+    height: 100vh;
+    background-size: 50%;
+    background-position: right;
+    background-repeat: no-repeat;
+    right: 1em;
+}
+
 @keyframes position {
     0% {
         transform: translate(-70vw, 15vh) scale(1);
     }
     100% {
         transform: translate(70vw, -15vh) scale(0.5);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(-15deg);
     }
 }
 

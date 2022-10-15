@@ -18,6 +18,9 @@ var loadFunc = function() {
         // Get all .fg-img elements as an array
         var fgImgs = Array.from(document.getElementsByClassName("fg-img"));
 
+        // Also add the tetronimos element to the array
+        fgImgs.push(document.getElementById("tetronimos"));
+
         // Remove all elements from the array that are not visible
         fgImgs = fgImgs.filter(function (element) {
             return element.getBoundingClientRect().top < viewportHeight && element.getBoundingClientRect().bottom > 0;
@@ -109,6 +112,48 @@ var loadFunc = function() {
             }
             // Above
             else if (scrollPosition < (viewportHeight * 4.5 - fgImg.offsetHeight / 2)) {
+                fgImg.style.transform = "translateY(0px)";
+            }
+        }
+
+        if (fgImgs.includes(document.getElementById("starfleet-logo"))) { // Starfleet Logo
+            // Like Stark
+            var fgImg = document.getElementById("starfleet-logo");
+            // Down-in & Up-out & Down-out & Up-in
+            if (scrollPosition >= (viewportHeight * 5.5 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight * 5.5 + fgImg.offsetHeight * 2.5)) {
+                var changeInPosition = scrollPosition / 6 - fgImg.offsetHeight;
+                fgImg.style.transform = "translateY(" + -changeInPosition + "px)";
+            }
+            // Above
+            else if (scrollPosition < (viewportHeight * 5.5 - fgImg.offsetHeight / 2)) {
+                fgImg.style.transform = "translateY(0px)";
+            }
+        }
+
+        if (fgImgs.includes(document.getElementById("tetronimos"))) { // Tetronimos
+            // Like Stark
+            var fgImg = document.getElementById("tetronimos");
+            // Down-in & Up-out & Down-out & Up-in
+            if (scrollPosition >= (viewportHeight * 6.5 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight * 6.5 + fgImg.offsetHeight * 2.5)) {
+                var changeInPosition = scrollPosition / 7 - fgImg.offsetHeight;
+                fgImg.style.transform = "translateY(" + -changeInPosition + "px)";
+            }
+            // Above
+            else if (scrollPosition < (viewportHeight * 6.5 - fgImg.offsetHeight / 2)) {
+                fgImg.style.transform = "translateY(0px)";
+            }
+        }
+
+        if (fgImgs.includes(document.getElementById("memento"))) { // Memento
+            // Like Stark
+            var fgImg = document.getElementById("memento");
+            // Down-in & Up-out & Down-out & Up-in
+            if (scrollPosition >= (viewportHeight * 7.5 - fgImg.offsetHeight / 2) && scrollPosition <= (viewportHeight * 7.5 + fgImg.offsetHeight * 2.5)) {
+                var changeInPosition = scrollPosition / 8 - fgImg.offsetHeight;
+                fgImg.style.transform = "translateY(" + -changeInPosition + "px)";
+            }
+            // Above
+            else if (scrollPosition < (viewportHeight * 7.5 - fgImg.offsetHeight / 2)) {
                 fgImg.style.transform = "translateY(0px)";
             }
         }
