@@ -57,4 +57,9 @@ window.onload = function() {
             footer.style.pointerEvents = "auto";
         }
     }
+
+    // Run the same function when the window is resized
+    window.onresize = function() {
+        window.onscroll();
+    }
 }

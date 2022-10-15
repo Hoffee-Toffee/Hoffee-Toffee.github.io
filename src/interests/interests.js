@@ -212,6 +212,13 @@ var loadFunc = function() {
             }
         });
     };
+
+    // The same function will also be called when the window is resized
+
+    window.onresize = function () {
+        document.getElementById("interests").onscroll();
+    }
+
 };
 
 // Run the function when the page loads, but after the default onload function has run
