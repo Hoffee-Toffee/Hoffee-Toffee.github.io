@@ -208,4 +208,7 @@ request.onerror = function () {
 
     window.location.href = "../404-page/404-page.html?message=Error loading projects.";
 };
-request.send();
+
+setTimeout(function () {
+    request.send();
+}, 500);
