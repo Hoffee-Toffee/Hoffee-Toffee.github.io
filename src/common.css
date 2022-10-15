@@ -244,6 +244,10 @@ header h1 {
     text-shadow: 0px 0px 10px black;
 }
 
+header h1 a {
+    color: white;
+}
+
 #header-scanline {
     pointer-events: none;
     position: absolute;
