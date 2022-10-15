@@ -20,6 +20,25 @@ window.onload = function() {
             })
             .then((data) => {
                 document.querySelector("body").insertAdjacentHTML("beforeend", data);
+                window.scrollTo(0, 1);
+                window.scrollTo(0, 0);
             });
+    }
+
+    window.onscroll = function() {
+        var scroll = window.scrollY;
+
+        // Make the header fade out as the user scrolls down the page
+        var header = document.querySelector("header");
+        var header_height = header.clientHeight;
+        var opacity = 1 - scroll / header_height;
+        header.style.opacity = opacity;
+
+        // Make the footer fade in as the user nears the bottom of the page
+        var footer = document.querySelector("footer");
+        var footer_height = footer.clientHeight;
+        var offset = document.getElementsByTagName("body")[0].clientHeight;
+        var opacity = -3 - (offset - scroll - window.innerHeight - footer_height) / footer_height;
+        footer.style.opacity = opacity;
     }
 }
