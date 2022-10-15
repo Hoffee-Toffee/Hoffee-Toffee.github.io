@@ -50,6 +50,7 @@ h1:nth-of-type(2) {
 }
 
 #other .project h3 {
+    font-size: 1.5em;
     margin: 0.5em 0em;
 }
 
@@ -65,6 +66,7 @@ h1:nth-of-type(2) {
 #other .project:hover {
     transform: scale(1.05);
     cursor: pointer;
+    color: white;
 }
 
 .project h3 {
@@ -107,14 +109,6 @@ h1:nth-of-type(2) {
     
 }
 
-.project iframe {
-    width: calc(100% - 2em);
-    height: 100%;
-    border: none;
-    margin-bottom: 1em;
-    pointer-events: none;
-}
-
 .project img {
     /* Don't stretch when resizing to fill */
     object-fit: contain;
@@ -136,20 +130,11 @@ h1:nth-of-type(2) {
 }
 
 .project-links a {
-    background-color: #FFFFFF11;
-    color: var(--color-blue);
-    text-decoration: none;
-    transition: 0.1s ease-in-out;
+    color: var(--color-green);
     font-family: 'Roboto', sans-serif;
-    text-shadow: 0 0 0.5em #00000044;
-    border: 1px solid var(--color-blue-light);
+    border: 1px solid var(--color-green-light);
     padding: 0.5em 1em;
     border-radius: 0.5em;
-}
-
-.project-links a:nth-of-type(2) {
-    color: var(--color-green);
-    border: 1px solid var(--color-green-light);
 }
 
 .project-links a:hover {
