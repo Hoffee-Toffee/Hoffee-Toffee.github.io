@@ -239,22 +239,6 @@ header nav ul li {
     margin: 0.5em 0;
 }
 
-header nav ul li::after { /* This is the underline that appears when you hover over a link */
-    content: "";
-    display: block;
-    margin-left: 100%;
-    width: 0;
-    height: 2px;
-    transition: 0.25s;
-    background-color: var(--color-green);
-}
-
-header nav ul li:hover::after { 
-    width: 100%;
-    transition: width 0.25s;
-    margin-left: 0%;
-}
-
 header h1 {
     margin: 0.5em 1em;
     text-shadow: 0px 0px 10px black;
@@ -395,6 +379,37 @@ header nav a:hover {
                  0px 0px 20px #88888866,
                  0px 0px 30px #cccccc55,
                  0px 0px 40px #ffffff44;
+}
+
+/* ===== --------- ===== */
+/* =====   LINKS   ===== */
+/* ===== --------- ===== */
+
+*:not(.projects) > a::after { /* This is the underline that appears when you hover over a link */
+    content: "";
+    display: block;
+    margin-left: 100%;
+    width: 0;
+    height: 2px;
+    transition: 0.25s;
+    background-color: var(--color-green);
+}
+
+a:hover::after { 
+    width: 100%;
+    transition: width 0.25s;
+    margin-left: 0%;
+}
+
+a {
+    display: inline-block;
+    color: var(--color-blue-lighter);
+    transition: 0.25s;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-green-lighter);
 }
 
 /* ===== ---------- ===== */

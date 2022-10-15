@@ -34,11 +34,27 @@ window.onload = function() {
         var opacity = 1 - scroll / header_height;
         header.style.opacity = opacity;
 
+        // If it's less than half transparent, make the header not clickable
+        if (opacity < 0.5) {
+            header.style.pointerEvents = "none";
+        }
+        else {
+            header.style.pointerEvents = "auto";
+        }
+
         // Make the footer fade in as the user nears the bottom of the page
         var footer = document.querySelector("footer");
         var footer_height = footer.clientHeight;
         var offset = document.getElementsByTagName("body")[0].clientHeight;
         var opacity = -3 - (offset - scroll - window.innerHeight - footer_height) / footer_height;
         footer.style.opacity = opacity;
+
+        // If it's less than half transparent, make the footer not clickable
+        if (opacity < 0.5) {
+            footer.style.pointerEvents = "none";
+        }
+        else {
+            footer.style.pointerEvents = "auto";
+        }
     }
 }
