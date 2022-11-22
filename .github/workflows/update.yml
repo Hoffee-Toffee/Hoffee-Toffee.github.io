@@ -19,10 +19,6 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
-          git clone --recurse-submodules https://github.com/Transit-Lumber/supedb.git
-          git clone --recurse-submodules https://github.com/Transit-Lumber/dead-space.git
-          git clone --recurse-submodules https://github.com/Transit-Lumber/supe-game.git
-          cd sur*
           git submodule update --remote --merge
           git add .
           git commit -m "Updated Submodules"
