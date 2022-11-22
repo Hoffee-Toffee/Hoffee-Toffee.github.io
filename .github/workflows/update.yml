@@ -17,54 +17,6 @@ jobs:
           submodules: recursive
       - name: Update submodules
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git submodule update --init --recursive
-          git add .
-          git commit -m "Update submodules"
-          git pushname: Update Submodules
-
-on:
-  workflow_dispatch:
-    inputs:
-      message:
-        description: 'Commit message'
-        required: true
-        default: 'Update submodules'
-
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-      - name: Update submodules
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git submodule update --init --recursive
-          git add .
-          git commit -m "Update submodules"
-          git pushname: Update Submodules
-
-on:
-  workflow_dispatch:
-    inputs:
-      message:
-        description: 'Commit message'
-        required: true
-        default: 'Update submodules'
-
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-      - name: Update submodules
-        run: |
           git config --global user.name "Transit-Lumber"
           git config --global user.email "tb59391@gmail.com"
           git submodule update --init --recursive
