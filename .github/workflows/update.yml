@@ -1,8 +1,12 @@
-name: Submodule Updates
+name: Update Submodules
 
-on: # Run this workflow whenever called
-  repository_dispatch:
-    types: [submodule-update]
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: 'Commit message'
+        required: true
+        default: 'Update submodules'
 
 jobs:
   update:
@@ -10,10 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-      - name: Update Submodules
+          submodules: recursive
+      - name: Update submodules
         run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git submodule update --init --recursive
           git add .
-          git commit -m "Update Submodules"
+          git commit -m "Update submodules"
           git push
