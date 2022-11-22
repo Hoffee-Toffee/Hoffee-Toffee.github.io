@@ -17,11 +17,7 @@ jobs:
           submodules: recursive
       - name: Update submodules
         run: |
-          git clone --recurse-submodules https://github.com/Transit-Lumber/supedb.git
-          git clone --recurse-submodules https://github.com/Transit-Lumber/dead-space.git
-          git clone --recurse-submodules https://github.com/Transit-Lumber/supe-game.git
-          cd sur*
-          git submodule update --remote
+          git submodule foreach git pull origin main
           git add .
           git commit -m "Updated Submodules"
           git push origin
