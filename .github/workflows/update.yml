@@ -17,9 +17,11 @@ jobs:
           submodules: recursive
       - name: Update submodules
         run: |
-          git config --global user.name "Transit-Lumber"
-          git config --global user.email "tb59391@gmail.com"
-          git submodule update --init --recursive
+          git clone --recurse-submodules https://github.com/Transit-Lumber/supedb.git
+          git clone --recurse-submodules https://github.com/Transit-Lumber/dead-space.git
+          git clone --recurse-submodules https://github.com/Transit-Lumber/supe-game.git
+          cd sur*
+          git submodule update --remote
           git add .
-          git commit -m "Update submodules"
-          git push
+          git commit -m "Updated Submodules"
+          git push origin
