@@ -16,6 +16,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
+          git pull --recurse-submodules
           git submodule update --remote
           git add .
           git commit -m "Updated Submodules"
