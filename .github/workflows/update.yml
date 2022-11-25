@@ -1,9 +1,9 @@
 name: Update Submodules
 
-# Run every hour
+# Run daily at 6:30am (NZST)
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron:  '30 17 * * *'
 
 jobs:
   update:
