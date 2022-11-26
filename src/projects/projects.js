@@ -28,68 +28,7 @@ request.onload = function () {
         });
 
         for (var i = 0; i < data.length; i++) {
-            var repo = data[i];
-            // Don't show the 'transit-lumber.github.io' repository, or any repos that 'Transit-Lumber' doesn't own
-            if (
-                repo.name == "Transit-Lumber.github.io" ||
-                repo.owner.login != "Transit-Lumber"
-            ) {
-                continue;
-            }
-
-            // Project Card (div)
-            var project = document.createElement("div");
-            project.id = repo.name;
-            project.className = "project";
-            project.href = repo.html_url;
-            project.target = "_blank";
-
-            // Project Title (H3)
-            var title = document.createElement("h3");
-            title.innerHTML = repo.name;
-            project.appendChild(title);
-
-            // Project Description
-            var description = document.createElement("p");
-            description.innerHTML = repo.description;
-            project.appendChild(description);
-
-            // Display a screenshot of the project if it has one, otherwise display a placeholder embed
-            var screenshot = document.createElement("img");
-            screenshot.src =
-                "https://raw.githubusercontent.com/Transit-Lumber/" +
-                repo.name +
-                "/master/screenshot.png";
-            project.appendChild(screenshot);
-
-            screenshot.onerror = function () {
-                console.log("error loading screenshot");
-                var embed = document.createElement("iframe");
-                embed.src = "../404-page/404-page.html?message=" + this.parentNode.id + " repo screenshot not found.";
-
-                this.parentNode.appendChild(embed);
-                this.remove();
-            }
-
-            // Add a link to the project repo and a link to the live project
-            var links = document.createElement("div");
-            links.className = "project-links";
-
-            var repo_link = document.createElement("a");
-            repo_link.href = repo.html_url;
-            repo_link.target = "_blank";
-            repo_link.innerHTML = "View Repo";
-
-            var live_link = document.createElement("a");
-            live_link.href = "/" + repo.name + "/index.html";
-            live_link.target = "_blank";
-            live_link.innerHTML = "Run Repo";
-
-            links.appendChild(repo_link);
-            links.appendChild(live_link);
-            project.appendChild(links);
-
-            featured_projects.appendChild(project);
+            collabCheck(data[i]);
         }
     } else {
         // We reached our target server, but it returned an error
@@ -212,3 +151,89 @@ request.onerror = function () {
 setTimeout(function () {
     request.send();
 }, 500);
+
+function collabCheck(repo) {
+    // Don't show the 'transit-lumber.github.io' repository, or any repos that 'Transit-Lumber' isn't a contributor of
+    if (repo.name == "Transit-Lumber.github.io") return;
+    
+    // Get the collaborators of the repo
+    var collaborators_request = new XMLHttpRequest();
+    collaborators_request.open(
+        "GET",
+        "https://api.github.com/repos/" + repo.full_name + "/contributors",
+        true
+    );
+    
+    collaborators_request.onload = function () {
+        if (collaborators_request.status < 200 || collaborators_request.status >= 400) return;
+
+        // Check if 'Transit-Lumber' is a contributor of the repo
+        var collaborators = JSON.parse(collaborators_request.responseText);
+        console.log(collaborators);
+        var is_contributor = false;
+        for (var j = 0; j < collaborators.length; j++) {
+            if (collaborators[j].login == "Transit-Lumber") {
+                is_contributor = true;
+                break;
+            }
+        }
+
+        if (!is_contributor) return;
+
+        // Project Card (div)
+        var project = document.createElement("div");
+        project.id = repo.name;
+        project.className = "project";
+        project.href = repo.html_url;
+        project.target = "_blank";
+
+        // Project Title (H3)
+        var title = document.createElement("h3");
+        title.innerHTML = repo.name;
+        project.appendChild(title);
+
+        // Project Description
+        var description = document.createElement("p");
+        description.innerHTML = repo.description;
+        project.appendChild(description);
+
+        // Display a screenshot of the project if it has one, otherwise display a placeholder embed
+        var screenshot = document.createElement("img");
+        screenshot.src =
+            "https://raw.githubusercontent.com/Transit-Lumber/" +
+            repo.name +
+            "/master/screenshot.png";
+        project.appendChild(screenshot);
+
+        screenshot.onerror = function () {
+            console.log("error loading screenshot");
+            var embed = document.createElement("iframe");
+            embed.src = "../404/404.html?message=" + this.parentNode.id + " repo screenshot not found.";
+
+            this.parentNode.appendChild(embed);
+            this.remove();
+        }
+
+        // Add a link to the project repo and a link to the live project
+        var links = document.createElement("div");
+        links.className = "project-links";
+
+        var repo_link = document.createElement("a");
+        repo_link.href = repo.html_url;
+        repo_link.target = "_blank";
+        repo_link.innerHTML = "View Repo";
+
+        var live_link = document.createElement("a");
+        live_link.href = "/" + repo.name + "/index.html";
+        live_link.target = "_blank";
+        live_link.innerHTML = "Run Repo";
+
+        links.appendChild(repo_link);
+        links.appendChild(live_link);
+        project.appendChild(links);
+
+        featured_projects.appendChild(project);
+    }
+
+    collaborators_request.send();
+}

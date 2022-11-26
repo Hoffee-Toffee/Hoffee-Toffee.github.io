@@ -109,7 +109,7 @@ h1:nth-of-type(2) {
     
 }
 
-.project img {
+.project img, .project iframe {
     /* Don't stretch when resizing to fill */
     object-fit: contain;
     width: calc(100% - 2em);
