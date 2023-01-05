@@ -1,7 +1,7 @@
 // Get all my starred repos from my GitHub account
 // and add them to the 'projects' div
 
-// Will get all the repositories by Transit-Lumber
+// Will get all the repositories by Hoffee-Toffee
 // The featured projects section will contain all my repos that I have starred
 // The other repos section will contain all my repos that I have not starred
 
@@ -13,7 +13,7 @@ var other_projects = document.getElementById("other");
 var request = new XMLHttpRequest();
 request.open(
     "GET",
-    "https://api.github.com/users/Transit-Lumber/starred",
+    "https://api.github.com/users/Hoffee-Toffee/starred",
     true
 );
 
@@ -48,7 +48,7 @@ request.onload = function () {
     var request2 = new XMLHttpRequest();
     request2.open(
         "GET",
-        "https://api.github.com/users/Transit-Lumber/repos",
+        "https://api.github.com/users/Hoffee-Toffee/repos",
         true
     );
 
@@ -67,9 +67,9 @@ request.onload = function () {
 
             for (var i = 0; i < data.length; i++) {
                 var repo = data[i];
-                // Don't show the 'transit-lumber.github.io' repository
+                // Don't show the 'Hoffee-Toffee.github.io' repository
                 if (
-                    repo.name == "Transit-Lumber.github.io"
+                    repo.name == "Hoffee-Toffee.github.io"
                 ) {
                     continue;
                 }
@@ -153,8 +153,8 @@ setTimeout(function () {
 }, 500);
 
 function collabCheck(repo) {
-    // Don't show the 'transit-lumber.github.io' repository, or any repos that 'Transit-Lumber' isn't a contributor of
-    if (repo.name == "Transit-Lumber.github.io") return;
+    // Don't show the 'Hoffee-Toffee.github.io' repository, or any repos that 'Hoffee-Toffee' isn't a contributor of
+    if (repo.name == "Hoffee-Toffee.github.io") return;
     
     // Get the collaborators of the repo
     var collaborators_request = new XMLHttpRequest();
@@ -167,12 +167,12 @@ function collabCheck(repo) {
     collaborators_request.onload = function () {
         if (collaborators_request.status < 200 || collaborators_request.status >= 400) return;
 
-        // Check if 'Transit-Lumber' is a contributor of the repo
+        // Check if 'Hoffee-Toffee' is a contributor of the repo
         var collaborators = JSON.parse(collaborators_request.responseText);
         console.log(collaborators);
         var is_contributor = false;
         for (var j = 0; j < collaborators.length; j++) {
-            if (collaborators[j].login == "Transit-Lumber") {
+            if (collaborators[j].login == "Hoffee-Toffee") {
                 is_contributor = true;
                 break;
             }
@@ -200,7 +200,7 @@ function collabCheck(repo) {
         // Display a screenshot of the project if it has one, otherwise display a placeholder embed
         var screenshot = document.createElement("img");
         screenshot.src =
-            "https://raw.githubusercontent.com/Transit-Lumber/" +
+            "https://raw.githubusercontent.com/Hoffee-Toffee/" +
             repo.name +
             "/master/screenshot.png";
         project.appendChild(screenshot);
