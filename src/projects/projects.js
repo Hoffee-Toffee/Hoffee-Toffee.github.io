@@ -114,6 +114,7 @@ request.onload = function () {
         // Remove the loading icon after the transition is done and fade in each project
         setTimeout(function () {
             document.getElementById("loading-projects").remove();
+            window.onscroll();
         }, 500);
     }.bind(starred_repos);
 

@@ -62,4 +62,6 @@ window.onload = function() {
     window.onresize = function() {
         window.onscroll();
     }
+
+    window.onscroll();
 }
