@@ -63,5 +63,8 @@ window.onload = function() {
         window.onscroll();
     }
 
-    window.onscroll();
+    // Check if it's not the interests .html page
+    if (window.location.pathname !== "/src/interests/interests.html") {
+        window.onscroll();
+    }
 }
