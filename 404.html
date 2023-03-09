@@ -1,4 +1,20 @@
 <!-- Redirect to {domain}/src/404/404.html -->
 <script>
-    window.location.href = window.location.origin + "/src/404/404.html";
+    if (confirm("Direct to 404 page?")) window.location.href = window.location.origin + "/src/404/404.html";
 </script>
+<h1>Use Inspect Element to test features</h1>
+<style>
+    body {
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: monospace;
+        color: dodgerblue;
+    }
+    h1 {
+        text-align: center;
+        font-size: 2rem;
+    }
+</style>

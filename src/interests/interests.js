@@ -21,6 +21,22 @@ var loadFunc = function() {
         // Also add the tetronimos element to the array
         fgImgs.push(document.getElementById("tetronimos"));
 
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const src = img.getAttribute("data-src");
+                    img.setAttribute("src", src);
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        fgImgs.forEach((img) => {
+            observer.observe(img);
+        });
+
         // Remove all elements from the array that are not visible
         fgImgs = fgImgs.filter(function (element) {
             return element.getBoundingClientRect().top < viewportHeight && element.getBoundingClientRect().bottom > 0;
