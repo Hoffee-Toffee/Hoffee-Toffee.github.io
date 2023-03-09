@@ -1,20 +1,26 @@
 <!-- Redirect to {domain}/src/404/404.html -->
 <script>
-    if (confirm("Direct to 404 page?")) window.location.href = window.location.origin + "/src/404/404.html";
+    var url = null;
+
+    var pathname = window.location.pathname;
+    var hash = window.location.hash;
+    var search = window.location.search;
+
+    // Make sure the url doesn't have an attribute of 'formatted'
+    if (search.includes("formatted")) {
+        // If it does, redirect to the 404 page
+        window.location.href = window.location.origin + "/src/404/404.html";
+    }
+
+    // If it ends with a slash, remove it
+    if (pathname.endsWith("/")) pathname = pathname.slice(0, -1);
+
+    // Check if the url is equal to '/projects', '/home', '/interests'
+    if (['/projects', '/home', '/interests'].includes(pathname)) {
+        // If it is, redirect to the page
+        url = "/src" + pathname + pathname + ".html";
+    }
+
+    // Redirect to the url with 'formatted' attribute
+    if (url) window.location.href = window.location.origin + url + "?formatted";
 </script>
-<h1>Use Inspect Element to test features</h1>
-<style>
-    body {
-        background-color: #000;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: monospace;
-        color: dodgerblue;
-    }
-    h1 {
-        text-align: center;
-        font-size: 2rem;
-    }
-</style>
