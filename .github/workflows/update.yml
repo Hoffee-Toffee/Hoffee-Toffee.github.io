@@ -1,9 +1,9 @@
 name: Update Submodules
 
-# Run daily at 6:30am (NZST) or when manually triggered
+# Run 4 times a day at 2am, 8am, 2pm, 8pm (NZST) or when manually triggered
 on:
   schedule:
-    - cron:  '30 17 * * *'
+    - cron:  '0 1/6 * * *'
   workflow_dispatch:
     workflows: [ "Update Submodules" ]
 
