@@ -14,3 +14,6 @@
 [submodule "OmniFocus"]
 	path = OmniFocus
 	url = https://github.com/fstevens30/OmniFocus
+[submodule "reflections"]
+	path = reflections
+	url = https://github.com/Hoffee-Toffee/reflections

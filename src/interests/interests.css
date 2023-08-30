@@ -299,6 +299,7 @@ footer {
     animation-delay: -10s;
     top: 60%;
     left: 10%;
+    cursor: help;
 }
 
 #games #t-block {

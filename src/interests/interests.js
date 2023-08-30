@@ -5,6 +5,11 @@ var loadFunc = function() {
     var interests = document.getElementById("interests");
     interests.style.paddingRight = interests.offsetWidth - interests.clientWidth + "px";
 
+    // Secrets
+    document.getElementById("s-block").addEventListener("click", function() {
+        window.location.href = window.location.origin + "/src/secret/secret.html";
+    })
+
     interests.onscroll = function () {
         // Creates parallax effects based on the scroll position
         // Controls opacity and the position of elements
