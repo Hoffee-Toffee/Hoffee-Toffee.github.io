@@ -8,9 +8,6 @@
 [submodule "supe-game"]
 	path = supe-game
 	url = https://github.com/Transit-Lumber/supe-game.git
-[submodule "Test-Platform"]
-	path = Test-Platform
-	url = https://github.com/Hoffee-Toffee/Test-Platform
 [submodule "OmniFocus"]
 	path = OmniFocus
 	url = https://github.com/fstevens30/OmniFocus
