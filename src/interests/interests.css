@@ -1,377 +1,378 @@
-body, html {
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
+body,
+html {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 footer {
-    display: none;
+  display: none;
 }
 
 #interests {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 100vw;
-    height: 100vh;
-    scroll-snap-type: y mandatory;
-    margin: 0;
-    padding: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  margin: 0;
+  padding: 0;
 }
 
 .interest p,
 .interest li {
-    /* Small, but easy to read */
-    font-size: 0.8em;
-    text-shadow: 0 0 0.5em #000000;
-    text-align: left;
+  /* Small, but easy to read */
+  font-size: 0.8em;
+  text-shadow: 0 0 0.5em #000000;
+  text-align: left;
 }
 
 .interest li {
-    margin-left: -1.5em;
+  margin-left: -1.5em;
 }
 
 .interest .interest-links {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .interest-links a {
-    background-color: #000000AA;
-    color: var(--color-green-light);
-    text-decoration: none;
-    transition: 0.1s ease-in-out;
-    font-family: 'Roboto', sans-serif;
-    text-shadow: 0 0 0.5em #FFFFFF22;
-    border: 1px solid var(--color-green-dark);
-    padding: 0.5em 1em;
-    border-radius: 0.5em;
-    margin: 0.5em;
+  background-color: #000000aa;
+  color: var(--color-green-light);
+  text-decoration: none;
+  transition: 0.1s ease-in-out;
+  font-family: 'Roboto', sans-serif;
+  text-shadow: 0 0 0.5em #ffffff22;
+  border: 1px solid var(--color-green-dark);
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  margin: 0.5em;
 }
 
 .interest-links a:hover {
-    background-color: #000000;
-    transform: scale(1.05);
-    color: var(--color-green-lightest);
-    border: 1px solid var(--color-green-lightest);
+  background-color: #000000;
+  transform: scale(1.05);
+  color: var(--color-green-lightest);
+  border: 1px solid var(--color-green-lightest);
 }
 
 .interest,
 .title-card {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: transparent;
-    z-index: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    scroll-snap-align: start;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    animation: tilt 60s infinite ease-in-out;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  scroll-snap-align: start;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: tilt 60s infinite ease-in-out;
 }
 
 .title-card {
-    text-align: center;
+  text-align: center;
 }
 
 #interests .interest:nth-child(2n + 1) {
-    animation: reverse-tilt 60s infinite ease-in-out;
+  animation: reverse-tilt 60s infinite ease-in-out;
 }
 
 #interests #dead-space {
-    background-image: url('./images/Titan-Station.png');
+  background-image: url('./images/Titan-Station.png');
 }
 
 #interests #marvel {
-    background-image: url('./images/Avengers_Tower.png');
+  background-image: url('./images/Avengers_Tower.png');
 
-    /* Make the background image darker */
-    background-blend-mode: multiply;
-    background-color: #00000055;
+  /* Make the background image darker */
+  background-blend-mode: multiply;
+  background-color: #00000055;
 }
 
 #interests #programming {
-    background-image: url('./images/processor.jpg');
-    background-blend-mode: multiply;
-    animation: color-cycle 20s infinite linear;
+  background-image: url('./images/processor.jpg');
+  background-blend-mode: multiply;
+  animation: color-cycle 20s infinite linear;
 }
 
 @keyframes color-cycle {
-    0% {
-        background-color: #FF000033;
-    }
-    33% {
-        background-color: #00FF0033;
-    }
-    66% {
-        background-color: #0000FF33;
-    }
-    100% {
-        background-color: #FF000033;
-    }
-
+  0% {
+    background-color: #ff000033;
+  }
+  33% {
+    background-color: #00ff0033;
+  }
+  66% {
+    background-color: #0000ff33;
+  }
+  100% {
+    background-color: #ff000033;
+  }
 }
 
 #interests #ai {
-    background-image: url('./images/gandr-collage.jpg');
-    background-blend-mode: multiply;
-    background-color: #000000AA;
+  background-image: url('./images/gandr-collage.jpg');
+  background-blend-mode: multiply;
+  background-color: #000000aa;
 }
 
 #interests #space {
-    background-image: url('./images/saturn.png');
+  background-image: url('./images/saturn.png');
 }
 
 #interests #star-trek {
-    background-image: url('./images/ds9.jpg');
+  background-image: url('./images/ds9.jpg');
 }
 
 #interests #games {
-    background-image: url('./images/obra-dinn.jpg');
-    background-blend-mode: multiply;
-    animation: color-cycle 20s infinite linear;
+  background-image: url('./images/obra-dinn.jpg');
+  background-blend-mode: multiply;
+  animation: color-cycle 20s infinite linear;
 }
 
 #interests #movies-and-tv {
-    background-image: url('./images/tenet.jpg');
-    background-blend-mode: multiply;
-    background-color: #000000AA;
+  background-image: url('./images/tenet.jpg');
+  background-blend-mode: multiply;
+  background-color: #000000aa;
 }
 
 #interests #other {
-    background-image: url('./images/vsauce.jpg');
-    background-blend-mode: multiply;
-    background-color: #000000AA;
+  background-image: url('./images/vsauce.jpg');
+  background-blend-mode: multiply;
+  background-color: #000000aa;
 }
 
 @keyframes tilt {
-    0% {
-        background-position: 25%;
-    }
-    50% {
-        background-position: 75%;
-    }
-    100% {
-        background-position: 25%;
-    }
+  0% {
+    background-position: 25%;
+  }
+  50% {
+    background-position: 75%;
+  }
+  100% {
+    background-position: 25%;
+  }
 }
 
 @keyframes reverse-tilt {
-    0% {
-        background-position: 75%;
-    }
-    50% {
-        background-position: 25%;
-    }
-    100% {
-        background-position: 75%;
-    }
+  0% {
+    background-position: 75%;
+  }
+  50% {
+    background-position: 25%;
+  }
+  100% {
+    background-position: 75%;
+  }
 }
 
 .fg-img {
-    z-index: -1;
-    position: absolute;
-    overflow-x: hidden;
+  z-index: -1;
+  position: absolute;
+  overflow-x: hidden;
+  filter: drop-shadow(0px 0px 30px #ffffff30);
 }
 
 #dead-space #isaac-clarke {
-    background-image: url('./images/Isaac-Clarke.png');
+  background-image: url('./images/Isaac-Clarke.png');
 
-    /* The image will fill the screen in the middle */
-    width: 100vw;
-    height: 100vh;
-    background-size: contain;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    min-width: 600px;
-    top: 0;
-    left: 0;
+  /* The image will fill the screen in the middle */
+  width: 100vw;
+  height: 100vh;
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  min-width: 600px;
+  top: 0;
+  left: 0;
 }
 
 #marvel #tony-stark {
-    background-image: url('./images/Tony-Stark.png');
-    width: 100vw;
-    height: 100vh;
-    background-size: contain;
-    background-position: 90% center;
-    background-repeat: no-repeat;
-    top: 0em;
-    left: 0;
+  background-image: url('./images/Tony-Stark.png');
+  width: 100vw;
+  height: 100vh;
+  background-size: contain;
+  background-position: 90% center;
+  background-repeat: no-repeat;
+  top: 0em;
+  left: 0;
 }
 
 #other #kurzgesagt-bird {
-    height: 25%;
-    width: 25%;
-    background: url("./images/bird.gif") no-repeat center center;
-    background-size: contain;
-    left: 5%;
-    top: 10%
+  height: 25%;
+  width: 25%;
+  background: url('./images/bird.gif') no-repeat center center;
+  background-size: contain;
+  left: 5%;
+  top: 10%;
 }
 
 #other #kurzgesagt-black-hole {
-    height: 25%;
-    width: 25%;
-    background: url("./images/black-hole.gif") no-repeat center center;
-    background-size: contain;
-    left: 25%;
-    top: 60%
+  height: 25%;
+  width: 25%;
+  background: url('./images/black-hole.gif') no-repeat center center;
+  background-size: contain;
+  left: 25%;
+  top: 60%;
 }
 
 #programming #github {
-    background-image: url('./images/github.png');
-    width: 25vw;
-    height: 100vh;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    left: 10vw;
-    opacity: 0.5;
+  background-image: url('./images/github.svg');
+  width: 30vw;
+  height: 100vh;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  left: 10vw;
+  opacity: 0.75;
 }
 
 #ai #neuralink-robot {
-    background-image: url('./images/neuralink-robot.png');
-    width: 100vw;
-    height: 100vh;
-    background-size: 40%;
-    background-position: right;
-    background-repeat: no-repeat;
-    right: 1em;
+  background-image: url('./images/neuralink-robot.png');
+  width: 100vw;
+  height: 100vh;
+  background-size: 40%;
+  background-position: right;
+  background-repeat: no-repeat;
+  right: 1em;
 }
 
 #space #starship {
-    background-image: url('./images/starship.png');
-    width: 100vw;
-    height: 100vh;
-    background-size: 40%;
-    background-position: center;
-    background-repeat: no-repeat;
-    animation: position 60s infinite cubic-bezier(0.5, 0, 1, 1);
+  background-image: url('./images/starship.png');
+  width: 100vw;
+  height: 100vh;
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: position 60s infinite cubic-bezier(0.5, 0, 1, 1);
 }
 
 #star-trek #starfleet-logo {
-    background-image: url('./images/starfleet-logo.png');
-    width: 100vw;
-    height: 100vh;
-    background-size: contain, 40%;
-    background-position: right;
-    background-repeat: no-repeat;
-    right: 1em;
-    filter: invert(1);
-    opacity: 0.75;
+  background-image: url('./images/starfleet-logo.png');
+  width: 100vw;
+  height: 100vh;
+  background-size: contain, 40%;
+  background-position: right;
+  background-repeat: no-repeat;
+  right: 1em;
+  filter: drop-shadow(0px 0px 30px #00000030) invert(1);
+  opacity: 0.75;
 }
 
 #tetronimos {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 #tetronimos * {
-    width: 15%;
-    height: 15%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: rotate 30s infinite ease-in-out;
+  width: 15%;
+  height: 15%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: rotate 30s infinite ease-in-out;
 }
 
 #games #l-block {
-    background-image: url('./images/l-block.png');
-    top: 5%;
-    left: 5%;
+  background-image: url('./images/l-block.png');
+  top: 5%;
+  left: 5%;
 }
 
 #games #o-block {
-    background-image: url('./images/o-block.png');
-    animation-delay: -5s;
-    top: 30%;
-    left: 30%;
+  background-image: url('./images/o-block.png');
+  animation-delay: -5s;
+  top: 30%;
+  left: 30%;
 }
 
 #games #s-block {
-    background-image: url('./images/s-block.png');
-    animation-delay: -10s;
-    top: 60%;
-    left: 10%;
-    cursor: help;
+  background-image: url('./images/s-block.png');
+  animation-delay: -10s;
+  top: 60%;
+  left: 10%;
+  cursor: help;
 }
 
 #games #t-block {
-    background-image: url('./images/t-block.png');
-    animation-delay: -15s;
-    top: 80%;
-    left: 25%;
+  background-image: url('./images/t-block.png');
+  animation-delay: -15s;
+  top: 80%;
+  left: 25%;
 }
 
 #movies-and-tv #memento {
-    background-image: url('./images/memento.png');
-    width: 100vw;
-    height: 100vh;
-    background-size: contain, 50%;
-    background-position: right;
-    background-repeat: no-repeat;
-    right: 1em;
+  background-image: url('./images/memento.png');
+  width: 100vw;
+  height: 100vh;
+  background-size: contain, 50%;
+  background-position: right;
+  background-repeat: no-repeat;
+  right: 1em;
 }
 
 @keyframes position {
-    0% {
-        transform: translate(-70vw, 15vh) scale(1);
-    }
-    100% {
-        transform: translate(70vw, -15vh) scale(0.5);
-    }
+  0% {
+    transform: translate(-70vw, 15vh) scale(1);
+  }
+  100% {
+    transform: translate(70vw, -15vh) scale(0.5);
+  }
 }
 
 @keyframes rotate {
-    0% {
-        transform: rotate(-15deg);
-    }
-    50% {
-        transform: rotate(15deg);
-    }
-    100% {
-        transform: rotate(-15deg);
-    }
+  0% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
 }
 
 .interest .content {
-    position: absolute;
-    right: 0%;
-    left: 50%;
-    top: 0%;
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    text-align: center;
-    background-color: #000000AA;
-    padding: 1em;
-    border-radius: 1em;
-    border: 1px solid white;
-    margin-right: 1em;
+  position: absolute;
+  right: 0%;
+  left: 50%;
+  top: 0%;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  text-align: center;
+  background-color: #000000aa;
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px solid white;
+  margin-right: 1em;
 }
 
 .interest:nth-child(2n + 1) .content {
-    right: 50%;
-    left: 0%;
-    margin-left: 1em;
-    margin-right: 0;
+  right: 50%;
+  left: 0%;
+  margin-left: 1em;
+  margin-right: 0;
 }
 
 @media (max-width: 750px) {
-    .interest .content,
-    .interest:nth-child(2n + 1) .content {
-        transform: translateX(0%);
-        margin: 0 1em;
-        left: 0;
-        right: 0;
-    }
+  .interest .content,
+  .interest:nth-child(2n + 1) .content {
+    transform: translateX(0%);
+    margin: 0 1em;
+    left: 0;
+    right: 0;
+  }
 
-    .fg-img {
-        display: none;
-    }
+  .fg-img {
+    display: none;
+  }
 }
