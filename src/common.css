@@ -3,161 +3,183 @@
 /* ===== ---------------------------- ===== */
 
 :root {
-    --color-blue-darkest: #152a38;
-    --color-blue-darker: #1a3a4a;
-    --color-blue-dark: #1e3c50;
-    --color-blue: #1e4e62;
-    --color-blue-light: #2a6e82;
-    --color-blue-lighter: #3c8ea4;
-    --color-blue-lightest: #4eaec6;
+  --color-blue-darkest: #152a38;
+  --color-blue-darker: #1a3a4a;
+  --color-blue-dark: #1e3c50;
+  --color-blue: #1e4e62;
+  --color-blue-light: #2a6e82;
+  --color-blue-lighter: #3c8ea4;
+  --color-blue-lightest: #4eaec6;
 
-    --color-green-darkest: #1a2b1a;
-    --color-green-darker: #1f3a1f;
-    --color-green-dark: #234723;
-    --color-green: #2a5f2a;
-    --color-green-light: #3c7f3c;
-    --color-green-lighter: #4e9e4e;
-    --color-green-lightest: #60be60;
+  --color-green-darkest: #1a2b1a;
+  --color-green-darker: #1f3a1f;
+  --color-green-dark: #234723;
+  --color-green: #2a5f2a;
+  --color-green-light: #3c7f3c;
+  --color-green-lighter: #4e9e4e;
+  --color-green-lightest: #60be60;
 
+  --color-orange-darkest: #711e00;
+  --color-orange-darker: #8a2e00;
+  --color-orange-dark: #a33e00;
+  --color-orange: #bc4e00;
+  --color-orange-light: #d55e00;
+  --color-orange-lighter: #ee6e00;
+  --color-orange-lightest: #ff7e00;
+}
 
-    --color-orange-darkest: #711e00;
-    --color-orange-darker: #8a2e00;
-    --color-orange-dark: #a33e00;
-    --color-orange: #bc4e00;
-    --color-orange-light: #d55e00;
-    --color-orange-lighter: #ee6e00;
-    --color-orange-lightest: #ff7e00;
+@font-face {
+  font-family: 'Russell Square';
+  font-weight: 100;
+  font-style: normal;
+  src: url('RusselSquareOpti.otf') format('opentype');
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Russell Square', sans-serif;
+  font-weight: 100;
 }
 
 @keyframes fadein {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    50% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scanline {
-    0% { left: -10px }
-    100% { left: 110px }
+  0% {
+    left: -10px;
+  }
+  100% {
+    left: 110px;
+  }
 }
 
 @keyframes header-scanline {
-    0% { left: 0vw }
-    100% { left: 100vw }
+  0% {
+    left: 0vw;
+  }
+  100% {
+    left: 100vw;
+  }
 }
 
 @keyframes lines {
-    0% {
-        background-position-y: 0px;
-        background-color: rgb(21, 55, 69);
-    }
-    25% {
-        background-color: rgb(11, 27, 34);
-    }
-    50% {
-        background-color: rgb(21, 55, 69);
-    }
-    75% {
-        background-color: rgb(11, 27, 34);
-    }
-    100% {
-        background-position-y: 16px;
-        background-color: rgb(21, 55, 69);
-    }
+  0% {
+    background-position-y: 0px;
+    background-color: rgb(21, 55, 69);
+  }
+  25% {
+    background-color: rgb(11, 27, 34);
+  }
+  50% {
+    background-color: rgb(21, 55, 69);
+  }
+  75% {
+    background-color: rgb(11, 27, 34);
+  }
+  100% {
+    background-position-y: 16px;
+    background-color: rgb(21, 55, 69);
+  }
 }
 
 @keyframes light-lines {
-    0% {
-        background-position-y: 0px;
-        background-color: rgb(78, 174, 198);
-    }
-    25% {
-        background-color: rgb(38, 78, 92);
-    }
-    50% {
-        background-color: rgb(78, 174, 198);
-    }
-    75% {
-        background-color: rgb(38, 78, 92);
-    }
-    100% {
-        background-position-y: 16px;
-        background-color: rgb(78, 174, 198);
-    }
+  0% {
+    background-position-y: 0px;
+    background-color: rgb(78, 174, 198);
+  }
+  25% {
+    background-color: rgb(38, 78, 92);
+  }
+  50% {
+    background-color: rgb(78, 174, 198);
+  }
+  75% {
+    background-color: rgb(38, 78, 92);
+  }
+  100% {
+    background-position-y: 16px;
+    background-color: rgb(78, 174, 198);
+  }
 }
 
 @keyframes dark-lines {
-    0% {
-        background-position-y: 0px;
-        background-color: rgb(21, 42, 56);
-    }
-    25% {
-        background-color: rgb(11, 27, 34);
-    }
-    50% {
-        background-color: rgb(21, 42, 56);
-    }
-    75% {
-        background-color: rgb(11, 27, 34);
-    }
-    100% {
-        background-position-y: 16px;
-        background-color: rgb(21, 42, 56);
-    }
+  0% {
+    background-position-y: 0px;
+    background-color: rgb(21, 42, 56);
+  }
+  25% {
+    background-color: rgb(11, 27, 34);
+  }
+  50% {
+    background-color: rgb(21, 42, 56);
+  }
+  75% {
+    background-color: rgb(11, 27, 34);
+  }
+  100% {
+    background-position-y: 16px;
+    background-color: rgb(21, 42, 56);
+  }
 }
 
 @keyframes lds-ripple {
-    0% {
-        top: 36px;
-        left: 36px;
-        width: 0;
-        height: 0;
-        opacity: 0;
-    }
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
 
-    4.9% {
-        top: 36px;
-        left: 36px;
-        width: 0;
-        height: 0;
-        opacity: 0;
-    }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
 
-    5% {
-        top: 36px;
-        left: 36px;
-        width: 0;
-        height: 0;
-        opacity: 1;
-    }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
 
-    100% {
-        top: 0px;
-        left: 0px;
-        width: 72px;
-        height: 72px;
-        opacity: 0;
-    }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
 }
 
 /* ===== ----------------- ===== */
 /* =====   HTML AND BODY   ===== */
 /* ===== ----------------- ===== */
 
-html, body {
-    margin: 50px 0;
-    padding: 0;
-    background-color: black;
-    color: white;
-
+html,
+body {
+  margin: 50px 0;
+  padding: 0;
+  background-color: black;
+  color: white;
 }
 
 /* ===== ------------------ ===== */
@@ -165,180 +187,183 @@ html, body {
 /* ===== ------------------ ===== */
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4em;
-    background: repeating-linear-gradient(
-        black 0px,
-        black 2px,
-        transparent 2px,
-        transparent 4px);
-    animation: lines 5s linear infinite;
-    box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4em;
+  background: repeating-linear-gradient(
+    black 0px,
+    black 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: lines 5s linear infinite;
+  box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
+  z-index: 1;
 }
 
 header::after {
-    content: "";
-    position: fixed;
-    top: 4em;
-    left: 0;
-    width: 100%;
-    height: 4em;
-    background: linear-gradient(
-        black 0%,
-        transparent 100%);
-    pointer-events: none;
+  content: '';
+  position: fixed;
+  top: 4em;
+  left: 0;
+  width: 100%;
+  height: 4em;
+  background: linear-gradient(black 0%, transparent 100%);
+  pointer-events: none;
 }
 
 header nav {
-    height: 100vh;
-    top: 0em;
-    padding: 1em;
-    padding-top: 4em;
-    position: absolute;
-    width: 7em;
-    transition: 0.25s ease-in;
-    background: repeating-linear-gradient(
-        black 0px,
-        black 2px,
-        transparent 2px,
-        transparent 4px);
-    animation: lines 5s linear infinite;
-    opacity: 0;
-    right: -7em;
-    z-index: 1;
-    text-align: right;
-    box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
+  height: 100vh;
+  top: 0em;
+  padding: 1em;
+  padding-top: 4em;
+  position: absolute;
+  width: 7em;
+  transition: 0.25s ease-in;
+  background: repeating-linear-gradient(
+    black 0px,
+    black 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: lines 5s linear infinite;
+  opacity: 0;
+  right: -7em;
+  z-index: 1;
+  text-align: right;
+  box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
 }
 
 header nav::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 8em;
-    height: 100vh;
-    background: linear-gradient(
-        to left,
-        black 0%,
-        transparent 100%);
-    pointer-events: none;
-    transition: 0.25s ease-in;
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 8em;
+  height: 100vh;
+  background: linear-gradient(to left, black 0%, transparent 100%);
+  pointer-events: none;
+  transition: 0.25s ease-in;
 }
 
 header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Russell Square';
 }
 
 header nav ul li {
-    margin: 0.5em 0;
+  margin: 0.5em 0;
 }
 
 header h1 {
-    margin: 0.5em 1em;
-    text-shadow: 0px 0px 10px black;
+  margin: 0.5em 1em;
+  text-shadow: 0px 0px 10px black;
+  font-family: 'Russell Square';
+  font-weight: 100;
 }
 
 header h1 a {
-    color: white;
+  color: white;
 }
 
 #header-scanline {
-    pointer-events: none;
-    position: absolute;
-    width: 1em;
-    height: 4em;
-    top: 0;
-    left: 0em;
-    z-index: 1;
-    background: linear-gradient(to right,
-                                transparent   0%,
-                                #00000088  50%,
-                                transparent 100% );
-    opacity: 1;
-    animation: header-scanline 2s linear infinite;
-    z-index: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 1em;
+  height: 4em;
+  top: 0;
+  left: 0em;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #00000088 50%,
+    transparent 100%
+  );
+  opacity: 1;
+  animation: header-scanline 2s linear infinite;
+  z-index: 0;
 }
 
-nav::before { /* This will add a black, semi-transparent layer over the site body when the mobile menu is open */
-    content: "";
-    position: absolute;
-    left: -100vw;
-    top: 0;
-    width: calc(100vw);
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.25s ease-in;
-    pointer-events:bounding-box;
+nav::before {
+  /* This will add a black, semi-transparent layer over the site body when the mobile menu is open */
+  content: '';
+  position: absolute;
+  left: -100vw;
+  top: 0;
+  width: calc(100vw);
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.25s ease-in;
+  pointer-events: bounding-box;
 }
 
 #nav-toggle {
-    display: none;
-    right: 0;
+  display: none;
+  right: 0;
 }
 
 #nav-toggle:checked ~ nav {
-    opacity: 1;
-    right: 0;
+  opacity: 1;
+  right: 0;
 }
 
 #nav-toggle:checked ~ nav::before {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 #nav-toggle:checked ~ nav::after {
-    right: 9em;
+  right: 9em;
 }
 
 #nav-toggle:checked ~ nav ul li::after {
-    display: none;
+  display: none;
 }
 
 #hamburger {
-    position: fixed;
-    top: 1.5em;
-    right: 1em;
+  position: fixed;
+  top: 1.5em;
+  right: 1em;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
-    color: white;
-    z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  color: white;
+  z-index: 2;
 }
 
 #hamburger .bar {
-    width: 100%;
-    height: 3px;
-    background: white;
-    transition: 0.25s ease-in-out;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  width: 100%;
+  height: 3px;
+  background: white;
+  transition: 0.25s ease-in-out;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 /* ≡ -> ⨉ (Cross Transition) */
 #nav-toggle:checked ~ #hamburger .bar:nth-child(1) {
-    transform: translateY(8.5px) rotate(135deg);
+  transform: translateY(8.5px) rotate(135deg);
 }
 
 #nav-toggle:checked ~ #hamburger .bar:nth-child(2) {
-    transform: translateX(-50%) scaleX(0);
-    opacity: 0;
+  transform: translateX(-50%) scaleX(0);
+  opacity: 0;
 }
 
 #nav-toggle:checked ~ #hamburger .bar:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-135deg);
+  transform: translateY(-8.5px) rotate(-135deg);
 }
 
 /* ≡ -> - (Minus Transition) */
@@ -369,51 +394,49 @@ nav::before { /* This will add a black, semi-transparent layer over the site bod
 } */
 
 header nav a {
-    color: white;
-    text-shadow: none;
-    text-decoration: none;
-    font-size: 1.5em;
-    transition: 0.25s;
+  color: white;
+  text-shadow: none;
+  text-decoration: none;
+  font-size: 1.5em;
+  transition: 0.25s;
 }
 
 header nav a:hover {
-    color: var(--color-blue-white);
-    text-shadow: 2px 2px 0px #00000088,
-                 0px 0px 10px #44444477,
-                 0px 0px 20px #88888866,
-                 0px 0px 30px #cccccc55,
-                 0px 0px 40px #ffffff44;
+  color: var(--color-blue-white);
+  text-shadow: 2px 2px 0px #00000088, 0px 0px 10px #44444477,
+    0px 0px 20px #88888866, 0px 0px 30px #cccccc55, 0px 0px 40px #ffffff44;
 }
 
 /* ===== --------- ===== */
 /* =====   LINKS   ===== */
 /* ===== --------- ===== */
 
-*:not(.projects) > a::after { /* This is the underline that appears when you hover over a link */
-    content: "";
-    display: block;
-    margin-left: 100%;
-    width: 0;
-    height: 2px;
-    transition: 0.25s;
-    background-color: var(--color-green);
+*:not(.projects) > a::after {
+  /* This is the underline that appears when you hover over a link */
+  content: '';
+  display: block;
+  margin-left: 100%;
+  width: 0;
+  height: 2px;
+  transition: 0.25s;
+  background-color: var(--color-green);
 }
 
-a:hover::after { 
-    width: 100%;
-    transition: width 0.25s;
-    margin-left: 0%;
+a:hover::after {
+  width: 100%;
+  transition: width 0.25s;
+  margin-left: 0%;
 }
 
 a {
-    display: inline-block;
-    color: var(--color-blue-lighter);
-    transition: 0.25s;
-    text-decoration: none;
+  display: inline-block;
+  color: var(--color-blue-lighter);
+  transition: 0.25s;
+  text-decoration: none;
 }
 
 a:hover {
-    color: var(--color-green-lighter);
+  color: var(--color-green-lighter);
 }
 
 /* ===== ---------- ===== */
@@ -421,76 +444,74 @@ a:hover {
 /* ===== ---------- ===== */
 
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4em;
-    background: repeating-linear-gradient(
-        black 0px,
-        black 2px,
-        transparent 2px,
-        transparent 4px);
-    animation: lines 5s linear infinite;
-    box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
+  font-family: 'Russell Square', sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4em;
+  background: repeating-linear-gradient(
+    black 0px,
+    black 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: lines 5s linear infinite;
+  box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
 }
 
 footer::after {
-    content: "";
-    position: fixed;
-    bottom: 4em;
-    left: 0;
-    width: 100%;
-    height: 4em;
-    background: linear-gradient(
-        transparent 0%,
-        black 100%);
-    pointer-events: none;
+  content: '';
+  position: fixed;
+  bottom: 4em;
+  left: 0;
+  width: 100%;
+  height: 4em;
+  background: linear-gradient(transparent 0%, black 100%);
+  pointer-events: none;
 }
 
 footer span {
-    display: block;
-    text-align: center;
-    color: white;
-    font-size: 1.5em;
-    margin: 1em 0;
+  display: block;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  margin: 1em 0;
 }
 
 footer span a {
-    color: white;
-    text-decoration: none;
-    text-shadow: 2px 2px 0px #00000088,
-                 0px 0px 10px var(--color-blue-darkest),
-                 0px 0px 20px var(--color-blue-dark),
-                 0px 0px 30px var(--color-blue),
-                 0px 0px 40px var(--color-blue-light);
-    transition: 0.5s;
+  color: white;
+  text-decoration: none;
+  text-shadow: 2px 2px 0px #00000088, 0px 0px 10px var(--color-blue-darkest),
+    0px 0px 20px var(--color-blue-dark), 0px 0px 30px var(--color-blue),
+    0px 0px 40px var(--color-blue-light);
+  transition: 0.5s;
 }
 
 footer span a:hover {
-    color: var(--color-blue-white);
-    text-shadow: 0px 0px 10px black,
-                 0px 0px 20px black,
-                 0px 0px 30px black,
-                 0px 0px 40px black;
+  color: var(--color-blue-white);
+  text-shadow: 0px 0px 10px black, 0px 0px 20px black, 0px 0px 30px black,
+    0px 0px 40px black;
 }
 
 #footer-scanline {
-    pointer-events: none;
-    position: absolute;
-    width: 1em;
-    height: 3em;
-    bottom: 0;
-    left: 0em;
-    z-index: 1;
-    background: linear-gradient(to right,
-                                transparent   0%,
-                                #00000088  50%,
-                                transparent 100% );
-    opacity: 1;
-    animation: header-scanline 2s linear infinite;
-    z-index: 0;
-    margin: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 1em;
+  height: 3em;
+  bottom: 0;
+  left: 0em;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #00000088 50%,
+    transparent 100%
+  );
+  opacity: 1;
+  animation: header-scanline 2s linear infinite;
+  z-index: 0;
+  margin: 0;
 }
 
 /* ===== ------------------ ===== */
@@ -498,60 +519,63 @@ footer span a:hover {
 /* ===== ------------------ ===== */
 
 .loading {
-    transition-duration: 0.5s;
-    /* Be in the mid of the screen (horizontaly) */
-    position: absolute;
-    left: calc(50vw - 50px);
-    top: calc(50vh - 50px);
+  transition-duration: 0.5s;
+  /* Be in the mid of the screen (horizontaly) */
+  position: absolute;
+  left: calc(50vw - 50px);
+  top: calc(50vh - 50px);
 }
 
 .lds-ripple {
-    display: inline-block;
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background: repeating-linear-gradient(
-        rgba(0,0,0,1) 0ex,
-        rgba(0,0,0,1) 2px,
-        rgba(0,0,0,0) 2px,
-        rgba(0,0,0,0) 4px);
-    animation: lines 5s linear infinite;
-    border-radius: 50%;
-    box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
-    outline: solid black 10px;
+  display: inline-block;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: repeating-linear-gradient(
+    rgba(0, 0, 0, 1) 0ex,
+    rgba(0, 0, 0, 1) 2px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0) 4px
+  );
+  animation: lines 5s linear infinite;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 10px rgb(0 0 0) inset;
+  outline: solid black 10px;
 }
 
 .lds-ripple div {
-    margin-left: 10px;
-    margin-top: 10px;
-    position: absolute;
-    border: 4px solid var(--color-blue-dark);
-    outline: 4px solid var(--color-blue-light);
-    opacity: 1;
-    border-radius: 50%;
-    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-    z-index: 1;
+  margin-left: 10px;
+  margin-top: 10px;
+  position: absolute;
+  border: 4px solid var(--color-blue-dark);
+  outline: 4px solid var(--color-blue-light);
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  z-index: 1;
 }
 
 .lds-ripple div:nth-child(2) {
-    animation-delay: -0.5s;
+  animation-delay: -0.5s;
 }
 
 .scanline {
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    width: 1em;
-    height: 100px;
-    left: 0em;
-    z-index: 1;
-    background: linear-gradient(to right,
-                                transparent   0%,
-                                #00000088  50%,
-                                transparent 100% );
-    opacity: 1;
-    animation: scanline 2s linear infinite;
-    z-index: 0;
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  width: 1em;
+  height: 100px;
+  left: 0em;
+  z-index: 1;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    #00000088 50%,
+    transparent 100%
+  );
+  opacity: 1;
+  animation: scanline 2s linear infinite;
+  z-index: 0;
 }
 
 /* ===== -------------------- ===== */
@@ -559,75 +583,74 @@ footer span a:hover {
 /* ===== -------------------- ===== */
 
 .scroll-indicator {
-    /* Will be centered at the bottom of it's parent element */
-    position: absolute;
-    bottom: 0;
-    left: calc(50% - 40px);
-    width: 80px;
-    height: 80px;
+  /* Will be centered at the bottom of it's parent element */
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
 }
 
 .scroll-indicator i {
-    /* Align in the middle of the parent element */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 2.5em;
-    color: #ffffff55;
-    animation: scroll-indicator 3s infinite ease-in-out;
-    text-shadow: var(--color-blue-darkest) 0px 0px 10px;
+  /* Align in the middle of the parent element */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2.5em;
+  color: #ffffff55;
+  animation: scroll-indicator 3s infinite ease-in-out;
+  text-shadow: var(--color-blue-darkest) 0px 0px 10px;
 }
 
 @keyframes scroll-indicator {
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -75%);
-    }
-    40% {
-        opacity: 1;
-        transform: translate(-50%, -75%);
-    }
-    80% {
-        transform: translate(-50%, -25%);
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -25%);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -75%);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(-50%, -75%);
+  }
+  80% {
+    transform: translate(-50%, -25%);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -25%);
+  }
 }
 
 @media (min-width: 600px) {
-    #hamburger {
-        display: none;
-    }
+  #hamburger {
+    display: none;
+  }
 
-    header nav {
-        position: fixed;
-        animation: none;
-        opacity: 1;
-        right: 0;
-        top: 0em;
-        background: none;
-        box-shadow: none;
-        height: 4em;
-        width: calc(50vw);
-    }
+  header nav {
+    position: fixed;
+    animation: none;
+    opacity: 1;
+    right: 0;
+    top: 0em;
+    background: none;
+    box-shadow: none;
+    height: 4em;
+    width: calc(50vw);
+  }
 
-    header nav ul {
-        margin-top: -3em;
-        display: flex;
-        flex-direction: row;
-        height: 100%;
-        justify-content: flex-end;
-    }
+  header nav ul {
+    margin-top: -3em;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: flex-end;
+  }
 
-    header nav ul li {
-        margin: 0 1em;
-        
-    }
+  header nav ul li {
+    margin: 0 1em;
+  }
 
-    header nav::after {
-        display: none;
-    }
+  header nav::after {
+    display: none;
+  }
 }
