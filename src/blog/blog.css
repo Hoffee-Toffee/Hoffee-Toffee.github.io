@@ -1,0 +1,86 @@
+.post {
+  border: 1px solid white;
+  border-radius: 1em;
+  box-shadow: 0 0 10px var(--color-blue-darkest);
+  margin: 0 auto;
+  padding: 10px;
+  padding-bottom: 0;
+  width: 90%;
+}
+
+.post h1 {
+  font-size: 2em;
+  margin: 0.5em 0em;
+  padding: 0;
+  text-align: center;
+}
+
+.post h1::after {
+  content: '';
+  display: block;
+  width: 75%;
+  left: 12.5%;
+  height: 2px;
+  background-color: var(--color-green);
+  transition: 0.25s;
+  position: relative;
+  top: 0.25em;
+  margin-bottom: 1em;
+}
+
+.post h2 {
+  font-size: 1em;
+  padding: 0;
+  text-align: center;
+  margin-top: -1em;
+  font-style: italic;
+  font-size: 0.8em;
+  opacity: 0.5;
+}
+
+.post h2::after {
+  content: '';
+  display: block;
+  width: 50%;
+  left: 25%;
+  height: 2px;
+  background-color: var(--color-orange-dark);
+  transition: 0.25s;
+  position: relative;
+  top: 0.25em;
+  margin-bottom: 1em;
+}
+
+.post h3 {
+  margin-top: 1.75em;
+  margin-bottom: -0.25em;
+  font-size: 0.75em;
+  color: var(--color-green-light);
+  width: 100%;
+}
+
+.post h3::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  transition: 0.25s;
+  position: relative;
+  bottom: 2em;
+  margin-bottom: 1em;
+  opacity: 0.25;
+}
+
+.post p {
+  font-family: 'Roboto', sans-serif;
+  margin: 0.5em 0em;
+  padding: 0.1em;
+}
+
+.post ul {
+  font-family: 'Roboto', sans-serif;
+  margin: 0.5em 1em;
+  padding: 0;
+  list-style-type: square;
+}
