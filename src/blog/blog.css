@@ -84,3 +84,27 @@
   padding: 0;
   list-style-type: square;
 }
+
+.post .gallery {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  outline: grey solid 1px;
+  border-radius: 0.25em;
+}
+
+.post .gallery div {
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  flex: 1 0 100%;
+  text-align: -webkit-center;
+  align-self: center;
+}
+
+.post .gallery div img {
+  display: block;
+  max-width: 100%;
+}
