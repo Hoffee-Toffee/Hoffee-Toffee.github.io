@@ -88,12 +88,18 @@
 
 .post .gallery {
   display: flex;
+  max-width: 45em;
   width: 100%;
+  min-width: 10em;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  outline: grey solid 1px;
+  outline: solid 1px var(--color-blue-darkest);
   border-radius: 0.25em;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 1.5em 0;
 }
 
 .post .gallery div {

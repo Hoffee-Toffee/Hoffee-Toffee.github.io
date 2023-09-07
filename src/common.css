@@ -28,6 +28,21 @@
   --color-orange-lightest: #ff7e00;
 }
 
+::-webkit-scrollbar {
+  background: black;
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-blue-dark);
+  transition: color 0.25s;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--color-blue);
+}
+
 @font-face {
   font-family: 'Russell Square';
   font-weight: 100;
@@ -401,12 +416,6 @@ header nav a {
   transition: 0.25s;
 }
 
-header nav a:hover {
-  color: var(--color-blue-white);
-  text-shadow: 2px 2px 0px #00000088, 0px 0px 10px #44444477,
-    0px 0px 20px #88888866, 0px 0px 30px #cccccc55, 0px 0px 40px #ffffff44;
-}
-
 /* ===== --------- ===== */
 /* =====   LINKS   ===== */
 /* ===== --------- ===== */
@@ -437,6 +446,20 @@ a {
 
 a:hover {
   color: var(--color-green-lighter);
+}
+
+nav a::after,
+header h1 a::after,
+footer a::after {
+  display: none !important;
+}
+
+nav a:hover,
+header h1 a:hover,
+footer a:hover {
+  color: var(--color-green-light) !important;
+  text-shadow: 2px 2px 0px #00000088, 0px 0px 10px #44444477,
+    0px 0px 20px #88888866, 0px 0px 30px #cccccc55, 0px 0px 40px #ffffff44;
 }
 
 /* ===== ---------- ===== */
@@ -482,16 +505,7 @@ footer span {
 footer span a {
   color: white;
   text-decoration: none;
-  text-shadow: 2px 2px 0px #00000088, 0px 0px 10px var(--color-blue-darkest),
-    0px 0px 20px var(--color-blue-dark), 0px 0px 30px var(--color-blue),
-    0px 0px 40px var(--color-blue-light);
   transition: 0.5s;
-}
-
-footer span a:hover {
-  color: var(--color-blue-white);
-  text-shadow: 0px 0px 10px black, 0px 0px 20px black, 0px 0px 30px black,
-    0px 0px 40px black;
 }
 
 #footer-scanline {
@@ -621,7 +635,7 @@ footer span a:hover {
   }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
   #hamburger {
     display: none;
   }
