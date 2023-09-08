@@ -107,6 +107,24 @@
 }
 
 .post .gallery {
+  background: repeating-linear-gradient(
+    black 0px,
+    black 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: lines 5s linear infinite;
+  box-shadow: 0 0 20px 10px black inset;
+  padding: 1em;
+  margin: 1.5em 0;
+  width: fit-content;
+  max-width: -webkit-fill-available;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.post .gallery > div {
   display: flex;
   max-width: 45em;
   width: 100%;
@@ -114,27 +132,56 @@
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  outline: solid 1px var(--color-blue-darkest);
-  border-radius: 0.25em;
+  border-radius: 1em;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  margin: 1.5em 0;
   font-family: 'Russell Square';
+  border: hwb(180deg 0% 50% / 50%) 2px solid;
+  mix-blend-mode: screen;
 }
 
-.post .gallery div {
+.post .gallery div::-webkit-scrollbar-thumb {
+  background: hwb(180deg 0% 50% / 50%);
+}
+
+.post .gallery div::-webkit-scrollbar-thumb {
+  background: hwb(180deg 0% 50% / 50%);
+}
+
+.post .gallery div div {
   width: 100%;
   height: 100%;
   scroll-snap-align: start;
-  flex: 1 0 100%;
+  flex: 0 0 100%;
   text-align: -webkit-center;
+  background: transparent;
   align-self: center;
 }
 
-.post .gallery div img {
+.post .gallery div div:not(:last-child) {
+  padding-right: 10px;
+}
+
+.post .gallery div div img {
   display: block;
   max-width: 100%;
+}
+
+.post .gallery span {
+  font-family: 'Russell Square';
+  line-height: calc(1.75em);
+  display: block;
+  width: calc(100% - 1em);
+  height: 100%;
+  text-align: center;
+  background: hwb(180deg 0% 50% / 33%);
+  padding: 0em 0.5em;
+  font-size: small;
+  font-style: italic;
+  box-shadow: 0 0 4px 2px black inset;
 }
 
 .post .audio {
