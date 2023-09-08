@@ -1,3 +1,23 @@
+@keyframes lines {
+  0% {
+    background-position-y: 0px;
+    background-color: rgb(21, 55, 69);
+  }
+  25% {
+    background-color: rgb(11, 27, 34);
+  }
+  50% {
+    background-color: rgb(21, 55, 69);
+  }
+  75% {
+    background-color: rgb(11, 27, 34);
+  }
+  100% {
+    background-position-y: 16px;
+    background-color: rgb(21, 55, 69);
+  }
+}
+
 .post {
   border: 1px solid white;
   border-radius: 1em;
@@ -100,6 +120,7 @@
   left: 50%;
   transform: translateX(-50%);
   margin: 1.5em 0;
+  font-family: 'Russell Square';
 }
 
 .post .gallery div {
@@ -115,3 +136,99 @@
   display: block;
   max-width: 100%;
 }
+
+.post .audio {
+  height: 7em;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.post .audio span {
+  font-family: 'Russell Square';
+  position: absolute;
+  top: calc(0.75em + 2px);
+  text-wrap: nowrap;
+  height: calc(2.25em + 2px);
+  line-height: calc(2.25em + 2px);
+  width: calc(100% - 1.5em - 4px);
+  text-align: center;
+  border-top-left-radius: 0.75em;
+  border-top-right-radius: 0.75em;
+  background: hwb(180deg 0% 50% / 33%);
+}
+
+.post .audio audio {
+  background: repeating-linear-gradient(
+    black 0px,
+    black 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: lines 5s linear infinite;
+  box-shadow: 0 0 20px 10px black inset;
+  padding: 0.75em;
+  height: calc(100% - 1em);
+  width: calc(90vw - 2em);
+  max-width: 500px;
+}
+
+.post .audio audio::-webkit-media-controls {
+  background: transparent;
+  border: hwb(180deg 0% 50% / 50%) 2px solid;
+  border-radius: 1em;
+}
+
+.post .audio audio::-webkit-media-controls-enclosure {
+  background: transparent;
+  filter: invert(1);
+}
+
+.post .audio audio::-webkit-media-controls-current-time-display,
+.post .audio audio::-webkit-media-controls-time-remaining-display {
+  font-family: 'Russell Square';
+  /* text-shadow: 0 0 4px hwb(0deg 0% 50% / 50%); */
+}
+
+/* 
+
+audio::-webkit-media-controls-overlay-enclosure
+
+audio::-webkit-media-slider-container
+
+audio::-webkit-media-controls-enclosure
+
+audio::-webkit-media-controls-panel
+
+audio::-webkit-media-controls-mute-button
+
+audio::-webkit-media-controls-play-button
+
+audio::-webkit-media-controls-timeline-container
+
+audio::-webkit-media-controls-current-time-display
+
+audio::-webkit-media-controls-time-remaining-display
+
+audio::-webkit-media-controls-timeline
+
+audio::-webkit-media-controls-volume-slider-container
+
+audio::-webkit-media-controls-volume-slider
+
+audio::-webkit-media-controls-seek-back-button
+
+audio::-webkit-media-controls-seek-forward-button
+
+audio::-webkit-media-controls-fullscreen-button
+
+audio::-webkit-media-controls-rewind-button
+
+audio::-webkit-media-controls-return-to-realtime-button
+
+audio::-webkit-media-controls-toggle-closed-captions-button
+
+*/
