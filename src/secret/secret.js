@@ -14,38 +14,86 @@ firebase.initializeApp(firebaseConfig)
 const db = firebase.firestore()
 
 window.onload = () => {
-  var secret = document.getElementById('secret')
+  var input = document.getElementsByTagName('input')[0]
 
-  secret.addEventListener('keydown', async (e) => {
+  input.addEventListener('keydown', async (e) => {
     console.log(e)
     var char = e.key.toUpperCase()
-    if (!new RegExp(/^[A-Z0-9 ]+$/).test(char)) {
+    if (!new RegExp(/^[A-Z0-9 -]+$/).test(char)) {
       e.preventDefault()
-    } else if (char == 'ENTER') {
-      secret.readOnly = true
+      var current = document.getElementsByClassName('caret')[0]
+      current.classList.add('shake')
 
-      var result = await check(secret.value.toUpperCase())
-
-      console.log(result)
-
-      secret.parentElement.parentElement.classList.add(
-        result ? 'green' : 'shake'
-      )
       var test = setTimeout(() => {
-        if (result) {
-          window.location.href = result
-        } else {
-          secret.parentElement.parentElement.classList.remove('shake')
-          secret.value = null
-          secret.readOnly = false
-        }
+        current.classList.remove('shake')
       }, 1000)
     }
+    if (input.value.length == input.selectionStart && e.key == 'ArrowRight') {
+      input.value += ' '
+    }
+  })
+
+  input.addEventListener('keyup', async (e) => {
+    if (e.key.startsWith('Arrow')) inputFunc(e)
+  })
+
+  input.addEventListener('input', (e) => inputFunc(e))
+  input.addEventListener('paste', (e) => e.preventDefault())
+  input.addEventListener('cut', (e) => e.preventDefault())
+  input.addEventListener('mousemove', (e) => e.preventDefault())
+  input.addEventListener('select', (e) => e.preventDefault())
+  inputFunc()
+
+  var spans = document.getElementsByTagName('header')[0].children[0].children
+  Array.from(spans).forEach((span, i) => {
+    span.addEventListener('click', (e) => {
+      console.log('Running')
+      input.focus()
+      input.selectionStart = i - 1
+      input.selectionEnd = i - 1
+      inputFunc()
+    })
   })
 }
 
+async function inputFunc(e) {
+  console.log('e')
+  var input = document.getElementsByTagName('input')[0]
+  var spans = document.getElementsByTagName('header')[0].children[0].children
+
+  Array.from(spans).forEach((span, i) => {
+    span.innerHTML = (input.value[i - 1] || '').replace(' ', '-')
+    span.classList = input.selectionStart == i - 1 ? 'caret' : ''
+  })
+
+  if (input.value.length == 7) {
+    input.readOnly = true
+
+    var result = await check(input.value.toUpperCase())
+
+    console.log(result)
+
+    input.parentElement.parentElement.classList.add(result ? 'green' : 'shake')
+    var test = setTimeout(() => {
+      if (result) {
+        window.location.href = result
+      }
+
+      input.parentElement.parentElement.classList.remove(
+        result ? 'green' : 'shake'
+      )
+      input.value = null
+      input.readOnly = false
+
+      inputFunc()
+    }, 1000)
+  }
+}
+
 async function check(text) {
-  const ref = db.collection('secrets').doc(text.toLowerCase())
+  const ref = db
+    .collection('secrets')
+    .doc(text.toLowerCase().replaceAll('-', ' '))
 
   try {
     const docSnapshot = await ref.get()
