@@ -19,7 +19,7 @@ window.onload = () => {
   input.addEventListener('keydown', async (e) => {
     console.log(e)
     var char = e.key.toUpperCase()
-    if (!new RegExp(/^[A-Z0-9 -]+$/).test(char)) {
+    if (!new RegExp(/^[A-Z0-9 ]+$/).test(char)) {
       e.preventDefault()
       var current = document.getElementsByClassName('caret')[0]
       current.classList.add('shake')
@@ -62,7 +62,7 @@ async function inputFunc(e) {
   var spans = document.getElementsByTagName('header')[0].children[0].children
 
   Array.from(spans).forEach((span, i) => {
-    span.innerHTML = (input.value[i - 1] || '').replace(' ', '-')
+    span.innerHTML = input.value[i - 1] || ''
     span.classList = input.selectionStart == i - 1 ? 'caret' : ''
   })
 
@@ -91,9 +91,7 @@ async function inputFunc(e) {
 }
 
 async function check(text) {
-  const ref = db
-    .collection('secrets')
-    .doc(text.toLowerCase().replaceAll('-', ' '))
+  const ref = db.collection('secrets').doc(text.toLowerCase())
 
   try {
     const docSnapshot = await ref.get()
