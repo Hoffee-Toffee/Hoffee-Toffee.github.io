@@ -41,7 +41,7 @@ footer {
 }
 
 .interest-links a {
-  background-color: #000000aa;
+  background-color: #00000080;
   color: var(--color-green-light);
   text-decoration: none;
   transition: 0.1s ease-in-out;
@@ -342,30 +342,54 @@ footer {
 }
 
 .interest .content {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  border-radius: 1em;
+  right: 1em;
+  outline: 2px solid white;
+  box-shadow: 0 0 20px 10px #000000 inset, 0 0 10px 5px #5f9ea050;
+}
+
+.interest .bg {
   position: absolute;
   right: 0%;
   left: 50%;
   top: 0%;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  text-align: center;
-  background-color: #000000aa;
-  padding: 1em;
-  border-radius: 1em;
-  border: 1px solid white;
-  margin-right: 1em;
 }
 
-.interest:nth-child(2n + 1) .content {
+.interest .content::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 1em;
+  padding: 0;
+  background: repeating-linear-gradient(
+    black 0px,
+    black 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: lines 5s linear infinite;
+  opacity: 0.75;
+}
+
+.interest:nth-child(2n + 1) .bg {
   right: 50%;
   left: 0%;
-  margin-left: 1em;
+  margin-left: 2em;
   margin-right: 0;
 }
 
 @media (max-width: 750px) {
-  .interest .content,
-  .interest:nth-child(2n + 1) .content {
+  .interest .bg,
+  .interest:nth-child(2n + 1) .bg {
     transform: translateX(0%);
     margin: 0 1em;
     left: 0;

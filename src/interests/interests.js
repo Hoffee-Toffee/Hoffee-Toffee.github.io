@@ -250,14 +250,10 @@ var loadFunc = function () {
       footer.style.display = 'none'
     }
 
-    // Get all .content divs in the 'interests' element as an array
-    var divs = Array.from(this.getElementsByClassName('content'))
+    // Get all .bg divs in the 'interests' element as an array
+    var divs = Array.from(this.getElementsByClassName('bg'))
 
-    // Remove the first and last .content div (the start and end markers)
-    divs.shift()
-    divs.pop()
-
-    // Loop through each .content div
+    // Loop through each .bg div
     divs.forEach(function (div) {
       // Check if between the start and end of the parallax effect
       // Parallax effect starts once you reach the 'interest' element that the div is in
@@ -284,7 +280,7 @@ var loadFunc = function () {
       else if (scrollPosition < div.parentNode.offsetTop - viewportHeight / 2) {
         div.style.visibility = 'hidden'
       }
-      // Check if after the end of the parallax effect, don't apply to the last .content div
+      // Check if after the end of the parallax effect, don't apply to the last .bg div
       else if (
         scrollPosition >
           div.parentNode.offsetTop +

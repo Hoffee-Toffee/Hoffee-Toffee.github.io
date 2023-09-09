@@ -90,8 +90,12 @@ async function inputFunc(e) {
   }
 }
 
-async function check(text) {
+async function check(text = String()) {
   const ref = db.collection('secrets').doc(text.toLowerCase())
+
+  // Check spacing
+  if (text.startsWith(' ') || text.endsWith(' ') || text.includes('  '))
+    return null
 
   try {
     const docSnapshot = await ref.get()
@@ -111,4 +115,117 @@ async function check(text) {
   }
 
   return null
+}
+
+const generateKey = async () => {
+  return window.crypto.subtle.generateKey(
+    {
+      name: 'AES-GCM',
+      length: 256,
+    },
+    true,
+    ['encrypt', 'decrypt']
+  )
+}
+
+const toKey = async (base64Key) => {
+  const rawKey = toBuffer(base64Key)
+  const key = await crypto.subtle.importKey(
+    'jwk',
+    rawKey,
+    { name: 'AES-CBC', length: 256 },
+    false,
+    ['decrypt']
+  )
+  return key
+}
+
+const toBuffer = async (base64) => {
+  const binaryString = atob(base64)
+  const len = binaryString.length
+  const bytes = new Uint8Array(len)
+  for (let i = 0; i < len; i++) {
+    bytes[i] = binaryString.charCodeAt(i)
+  }
+  return bytes.buffer
+}
+
+const encode = (data) => {
+  const encoder = new TextEncoder()
+  return encoder.encode(data)
+}
+
+const generateIv = () => {
+  return window.crypto.getRandomValues(new Uint8Array(12))
+}
+
+const encrypt = async (data, key) => {
+  const encoded = encode(data)
+  const iv = generateIv()
+  const cipher = await window.crypto.subtle.encrypt(
+    {
+      name: 'AES-GCM',
+      iv: iv,
+    },
+    key,
+    encoded
+  )
+  return {
+    cipher,
+    iv,
+  }
+}
+
+const pack = (buffer) => {
+  return window.btoa(String.fromCharCode.apply(null, new Uint8Array(buffer)))
+}
+
+const unpack = (packed) => {
+  const string = window.atob(packed)
+  const buffer = new ArrayBuffer(string.length)
+  const bufferView = new Uint8Array(buffer)
+  for (let i = 0; i < string.length; i++) {
+    bufferView[i] = string.charCodeAt(i)
+  }
+  return buffer
+}
+
+const decode = (bytestream) => {
+  const decoder = new TextDecoder()
+  return decoder.decode(bytestream)
+}
+
+const decrypt = async (cipher, key, iv) => {
+  const encoded = await window.crypto.subtle.decrypt(
+    {
+      name: 'AES-GCM',
+      iv: iv,
+    },
+    key,
+    cipher
+  )
+  return decode(encoded)
+}
+
+const app = async () => {
+  // encrypt message
+  const first = 'Hello, World!'
+  const key = await generateKey()
+  const { cipher, iv } = await encrypt(first, key)
+
+  // pack and transmit
+  await fetch('/secure-api', {
+    method: 'POST',
+    body: JSON.stringify({
+      cipher: pack(cipher),
+      iv: pack(iv),
+    }),
+  })
+
+  // retrieve
+  const response = await fetch('/secure-api').then((res) => res.json())
+
+  // unpack and decrypt message
+  const final = await decrypt(unpack(response.cipher), key, unpack(response.iv))
+  console.log(final) // logs 'Hello, World!'
 }
