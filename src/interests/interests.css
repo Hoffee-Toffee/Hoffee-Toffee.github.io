@@ -135,19 +135,19 @@ footer {
 }
 
 #interests #games {
-  background-image: url('./images/obra-dinn.jpg');
+  /* background-image: url('./images/obra-dinn.jpg'); */
   background-blend-mode: multiply;
   animation: color-cycle 20s infinite linear;
 }
 
 #interests #movies-and-tv {
-  background-image: url('./images/tenet.jpg');
+  background-image: url('./images/oppenheimer.png');
+  background-color: #00000080;
   background-blend-mode: multiply;
-  background-color: #000000aa;
 }
 
 #interests #other {
-  background-image: url('./images/vsauce.jpg');
+  /* background-image: url('./images/vsauce.jpg'); */
   background-blend-mode: multiply;
   background-color: #000000aa;
 }
@@ -187,14 +187,14 @@ footer {
   background-image: url('./images/Isaac-Clarke.png');
 
   /* The image will fill the screen in the middle */
-  width: 100vw;
-  height: 100vh;
+  width: 50vw;
+  height: calc(100vh - 1em);
   background-size: contain;
   background-position: bottom;
   background-repeat: no-repeat;
-  min-width: 600px;
   top: 0;
   left: 0;
+  border-top: solid 1em transparent;
 }
 
 #marvel #tony-stark {
@@ -211,7 +211,7 @@ footer {
 #other #kurzgesagt-bird {
   height: 25%;
   width: 25%;
-  background: url('./images/bird.gif') no-repeat center center;
+  /* background: url('./images/bird.gif') no-repeat center center; */
   background-size: contain;
   left: 5%;
   top: 10%;
@@ -220,7 +220,7 @@ footer {
 #other #kurzgesagt-black-hole {
   height: 25%;
   width: 25%;
-  background: url('./images/black-hole.gif') no-repeat center center;
+  /* background: url('./images/black-hole.gif') no-repeat center center; */
   background-size: contain;
   left: 25%;
   top: 60%;
@@ -312,12 +312,14 @@ footer {
 
 #movies-and-tv #memento {
   background-image: url('./images/memento.png');
-  width: 100vw;
-  height: 100vh;
+  width: calc(50vw - 1em);
+  height: calc(100vh - 2em);
   background-size: contain, 50%;
   background-position: right;
   background-repeat: no-repeat;
   right: 1em;
+  border-top: solid 1.5em transparent;
+  opacity: 0.75;
 }
 
 @keyframes position {
@@ -392,7 +394,7 @@ footer {
   .interest:nth-child(2n + 1) .bg {
     transform: translateX(0%);
     margin: 0 1em;
-    left: 0;
+    left: 2em;
     right: 0;
   }
 

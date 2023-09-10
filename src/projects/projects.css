@@ -36,13 +36,20 @@ h1:nth-of-type(2) {
   width: calc(100vw + -5em);
   height: fit-content;
   min-height: 20em;
-  animation: fadein 2s;
-  border: #ffffff88 1px solid;
+  animation: fadein 2s, lines 5s linear infinite;
   border-radius: 1em;
   margin-bottom: 2em;
   transition-duration: 0.25s;
   color: white;
   text-decoration: none;
+  background: repeating-linear-gradient(
+    black 0px,
+    black 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  outline: 2px solid white;
+  box-shadow: 0 0 20px 10px #000000 inset, 0 0 10px 5px #5f9ea050;
 }
 
 #other .project {
@@ -136,10 +143,11 @@ h1:nth-of-type(2) {
   border: 1px solid var(--color-green-light);
   padding: 0.5em 1em;
   border-radius: 0.5em;
+  background: #00000050;
 }
 
 .project-links a:hover {
-  background-color: #ffffff00;
+  background-color: #000000;
   transform: scale(1.05);
 }
 
