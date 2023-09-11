@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>CSS Positioning | Tristan Bulmer - Portfolio</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Add common CSS and JS -->
+    <link rel="stylesheet" href="../common.css" />
+    <script type="module" src="../common.js"></script>
+
+    <!-- Add this page's CSS and JS -->
+    <link rel="stylesheet" href="blog.css" />
+    <script type="module" src="blog.js"></script>
+  </head>
+
+  <body>
+    <div class="post">
+      <style>
+        .box {
+          color: red;
+          padding: 0.5em;
+          background: white;
+          cursor: default;
+          transition: 0.25s;
+        }
+
+        .box:hover {
+          opacity: 0.25;
+        }
+
+        #relative {
+          position: relative;
+          top: 2em;
+          right: 0;
+        }
+
+        #absolute {
+          position: absolute;
+          top: 5em;
+          right: 0;
+        }
+
+        #fixed {
+          position: fixed;
+          bottom: 50vh;
+          right: 0;
+        }
+      </style>
+      <h1>CSS Positioning</h1>
+      <subtitle>Relative, Absolute, and Fixed positioning</subtitle>
+
+      <h2>Absolute</h2>
+      <p>
+        Absolute positioning means to place the element relative to the first
+        parent up the chain that has position relative or absolute (or the page
+        itself if none).
+        <br />
+        This is very useful, it is like choosing coordinates within these bounds
+        as to place the element.
+        <br />
+        Think of it as choosing coordinates within these bounds to place the
+        element.
+        <br />
+        <br />
+        For example, if you do...
+        <code>#absolute { position: absolute; top: 5em; right: 0; }</code>
+        ...then it will place the element 5em from the top of the bounds
+        (nearest parent that fits the conditions above), which is the page in
+        this context.
+        <span id="absolute" class="box">Absolute: (Relative to page)</span>
+        <br />
+        <br />
+        This will also remove it from the 'flow' meaning that it won't push
+        other elements where it was.
+      </p>
+
+      <h2>Fixed</h2>
+      <p>
+        Fixed positioning means to place the element relative to screen,
+        unaffected by scroll.
+        <br />
+        Think of it like it's coordinates on your physical screen, as if it were
+        a sticky note placed on the screen itself.
+        <br />
+        <br />
+        For example, if you do...
+        <code>#fixed { position: fixed; bottom: 50vh; right: 0; }</code>
+        ...then it will place the element on the screen, halfway from the
+        bottom.
+        <span id="fixed" class="box">Fixed: (Relative to screen)</span>
+        <br />
+        Very handy for navigation bars and footers.
+        <br />
+        Also taken out of flow.
+      </p>
+
+      <h2>Relative</h2>
+      <p>
+        Relative positioning means to place the element relative to itself.
+        <br />
+        Think of it as simply offsetting.
+        <br />
+        <br />
+        For example, if you do...
+        <code>#relative { position: relative; top: 2em; right: 0; }</code>
+        ...then it will shift the element down by this amount.
+        <br />
+        This is compared to it's original position.
+        <br />
+        <br />
+
+        <span id="relative" class="box">Relative: (Relative to itself)</span>
+        <- RELATIVE BLOCK USED TO BE HERE | COVERED TEXT | COVERED TEXT |
+        COVERED TEXT | COVERED TEXT | COVERED TEXT | COVERED TEXT | COVERED TEXT
+        | COVERED TEXT | COVERED TEXT | COVERED TEXT | COVERED TEXT | COVERED
+        TEXT | COVERED TEXT | COVERED TEXT | COVERED TEXT | COVERED TEXT |
+        COVERED TEXT | COVERED TEXT | COVERED TEXT | COVERED TEXT
+      </p>
+
+      <h2>Notes</h2>
+      Using any of these (or any that are just not 'static') also allows for the
+      use of
+      <span style="text-wrap: nowrap"
+        >'<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/z-index"
+          >z-index</a
+        >'</span
+      >
+      which is very handy and is used to change layering.
+      <date>11 September 2023</date>
+    </div>
+  </body>
+</html>

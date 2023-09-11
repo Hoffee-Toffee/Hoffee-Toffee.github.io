@@ -48,7 +48,7 @@
   margin-bottom: 1em;
 }
 
-.post h2 {
+.post subtitle {
   font-size: 1em;
   padding: 0;
   text-align: center;
@@ -56,9 +56,11 @@
   font-style: italic;
   font-size: 0.8em;
   opacity: 0.5;
+  display: block;
+  width: 100%;
 }
 
-.post h2::after {
+.post subtitle::after {
   content: '';
   display: block;
   width: 50%;
@@ -71,15 +73,20 @@
   margin-bottom: 1em;
 }
 
-.post h3 {
+.post h2 {
+  margin-left: 0.25em;
+}
+
+.post date {
   margin-top: 1.75em;
   margin-bottom: -0.25em;
   font-size: 0.75em;
   color: var(--color-green-light);
+  display: block;
   width: 100%;
 }
 
-.post h3::after {
+.post date::after {
   content: '';
   display: block;
   width: 100%;
@@ -99,11 +106,63 @@
   padding-left: 0.5em;
 }
 
-.post ul {
+.post code {
+  background-color: #ffffff10;
+  border-radius: 0.5em;
+  outline: var(--color-blue-darkest) 2px solid;
+  display: block;
+  margin: 1em;
+  padding: 1em;
+}
+
+.post ul,
+.post ol {
   font-family: 'Roboto', sans-serif;
-  margin: 0.5em 1em;
-  padding-left: 1em;
   list-style-type: square;
+  padding: 0.5em 0 0.5em 2em;
+  margin: 2em 0 0.5em 0.5em;
+  background-color: #0c0c0c;
+  width: calc(100% - 3.5em);
+  max-width: calc(100vw - 6em);
+  border-radius: 0.5em;
+  outline: 1px solid var(--color-orange-darkest);
+}
+
+.post ul[headerText]::before,
+.post ol[headerText]::before {
+  content: attr(headerText) ':';
+}
+
+.post ul[headerText]::before,
+.post ol[headerText]::before {
+  display: block;
+  font-family: 'Russell Square';
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+  margin-left: -1em;
+  color: #bbb;
+}
+
+.post ul li::marker,
+.post ol li::marker {
+  color: #888;
+}
+
+.post ul li,
+.post ol li {
+  margin: 0.25em 0;
+  padding-left: 0.5em;
+}
+
+.post ul li:not(:last-child)::after,
+.post ol li:not(:last-child)::after {
+  content: '';
+  display: block;
+  width: calc(100% - 1.5em);
+  height: 1px;
+  background-color: #222;
+  margin: 0.5em 0;
+  position: relative;
 }
 
 .post .gallery {
@@ -168,6 +227,7 @@
 .post .gallery div div img {
   display: block;
   max-width: 100%;
+  max-height: 80vh;
 }
 
 .post .gallery span {
@@ -239,43 +299,3 @@
   font-family: 'Russell Square';
   /* text-shadow: 0 0 4px hwb(0deg 0% 50% / 50%); */
 }
-
-/* 
-
-audio::-webkit-media-controls-overlay-enclosure
-
-audio::-webkit-media-slider-container
-
-audio::-webkit-media-controls-enclosure
-
-audio::-webkit-media-controls-panel
-
-audio::-webkit-media-controls-mute-button
-
-audio::-webkit-media-controls-play-button
-
-audio::-webkit-media-controls-timeline-container
-
-audio::-webkit-media-controls-current-time-display
-
-audio::-webkit-media-controls-time-remaining-display
-
-audio::-webkit-media-controls-timeline
-
-audio::-webkit-media-controls-volume-slider-container
-
-audio::-webkit-media-controls-volume-slider
-
-audio::-webkit-media-controls-seek-back-button
-
-audio::-webkit-media-controls-seek-forward-button
-
-audio::-webkit-media-controls-fullscreen-button
-
-audio::-webkit-media-controls-rewind-button
-
-audio::-webkit-media-controls-return-to-realtime-button
-
-audio::-webkit-media-controls-toggle-closed-captions-button
-
-*/
