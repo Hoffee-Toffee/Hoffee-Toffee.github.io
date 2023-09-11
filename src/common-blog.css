@@ -1,33 +1,15 @@
-@keyframes lines {
-  0% {
-    background-position-y: 0px;
-    background-color: rgb(21, 55, 69);
-  }
-  25% {
-    background-color: rgb(11, 27, 34);
-  }
-  50% {
-    background-color: rgb(21, 55, 69);
-  }
-  75% {
-    background-color: rgb(11, 27, 34);
-  }
-  100% {
-    background-position-y: 16px;
-    background-color: rgb(21, 55, 69);
-  }
-}
-
+#content,
 .post {
   border: 1px solid white;
   border-radius: 1em;
   box-shadow: 0 0 10px var(--color-blue-darkest);
   margin: 0 auto;
   padding: 10px;
-  padding-bottom: 0;
   width: 90%;
+  padding-bottom: 0;
 }
 
+#content h1,
 .post h1 {
   font-size: 2em;
   margin: 0.5em 0em;
@@ -35,19 +17,105 @@
   text-align: center;
 }
 
+#content h1::after,
 .post h1::after {
   content: '';
   display: block;
   width: 75%;
   left: 12.5%;
   height: 2px;
-  background-color: var(--color-green);
+  background-color: var(--color-blue);
   transition: 0.25s;
   position: relative;
   top: 0.25em;
   margin-bottom: 1em;
 }
 
+#content h2,
+.post h2 {
+  font-size: 1.5em;
+  margin: 0.5em 0em;
+  padding: 0;
+}
+
+#content h2::after,
+.post h2::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-orange);
+  transition: 0.25s;
+  position: relative;
+  top: 0.25em;
+  margin-bottom: 1em;
+  opacity: 0.5;
+}
+
+#content p,
+.post p {
+  font-family: 'Roboto', sans-serif;
+  margin: 1em 0em;
+  padding: 0.1em;
+  padding-left: 0.5em;
+}
+
+#content ul,
+#content ol,
+.post ul,
+.post ol {
+  font-family: 'Roboto', sans-serif;
+  list-style-type: square;
+  padding: 0.5em 0 0.5em 2em;
+  margin: 2em 0 1.5em 0.5em;
+  background-color: #ffffff10;
+  width: calc(100% - 3.5em);
+  max-width: calc(100vw - 6em);
+  border-radius: 0.5em;
+}
+
+#content ul[headerText]::before,
+#content ol[headerText]::before,
+.post ul[headerText]::before,
+.post ol[headerText]::before {
+  content: attr(headerText) ':';
+  display: block;
+  font-family: 'Russell Square';
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+  margin-left: -1em;
+  color: #bbb;
+}
+
+#content ul li::marker,
+#content ol li::marker,
+.post ul li::marker,
+.post ol li::marker {
+  color: #888;
+}
+
+#content ul li,
+#content ol li,
+.post ul li,
+.post ol li {
+  margin: 0.25em 0;
+  padding-left: 0.5em;
+}
+
+#content ul li:not(:last-child)::after,
+#content ol li:not(:last-child)::after,
+.post ul li:not(:last-child)::after,
+.post ol li:not(:last-child)::after {
+  content: '';
+  display: block;
+  width: calc(100% - 1.5em);
+  height: 1px;
+  background-color: #222;
+  margin: 0.5em 0;
+  position: relative;
+}
+
+#content subtitle,
 .post subtitle {
   font-size: 1em;
   padding: 0;
@@ -60,23 +128,21 @@
   width: 100%;
 }
 
+#content subtitle::after,
 .post subtitle::after {
   content: '';
   display: block;
   width: 50%;
   left: 25%;
   height: 2px;
-  background-color: var(--color-orange-dark);
+  background-color: var(--color-green-dark);
   transition: 0.25s;
   position: relative;
   top: 0.25em;
   margin-bottom: 1em;
 }
 
-.post h2 {
-  margin-left: 0.25em;
-}
-
+#content date,
 .post date {
   margin-top: 1.75em;
   margin-bottom: -0.25em;
@@ -86,6 +152,7 @@
   width: 100%;
 }
 
+#content date::after,
 .post date::after {
   content: '';
   display: block;
@@ -99,13 +166,7 @@
   opacity: 0.25;
 }
 
-.post p {
-  font-family: 'Roboto', sans-serif;
-  margin: 0.5em 0em;
-  padding: 0.1em;
-  padding-left: 0.5em;
-}
-
+#content code,
 .post code {
   background-color: #ffffff10;
   border-radius: 0.5em;
@@ -115,57 +176,7 @@
   padding: 1em;
 }
 
-.post ul,
-.post ol {
-  font-family: 'Roboto', sans-serif;
-  list-style-type: square;
-  padding: 0.5em 0 0.5em 2em;
-  margin: 2em 0 0.5em 0.5em;
-  background-color: #0c0c0c;
-  width: calc(100% - 3.5em);
-  max-width: calc(100vw - 6em);
-  border-radius: 0.5em;
-  outline: 1px solid var(--color-orange-darkest);
-}
-
-.post ul[headerText]::before,
-.post ol[headerText]::before {
-  content: attr(headerText) ':';
-}
-
-.post ul[headerText]::before,
-.post ol[headerText]::before {
-  display: block;
-  font-family: 'Russell Square';
-  font-size: 1.25em;
-  margin-bottom: 0.5em;
-  margin-left: -1em;
-  color: #bbb;
-}
-
-.post ul li::marker,
-.post ol li::marker {
-  color: #888;
-}
-
-.post ul li,
-.post ol li {
-  margin: 0.25em 0;
-  padding-left: 0.5em;
-}
-
-.post ul li:not(:last-child)::after,
-.post ol li:not(:last-child)::after {
-  content: '';
-  display: block;
-  width: calc(100% - 1.5em);
-  height: 1px;
-  background-color: #222;
-  margin: 0.5em 0;
-  position: relative;
-}
-
-.post .gallery {
+.gallery {
   background: repeating-linear-gradient(
     black 0px,
     black 2px,
@@ -183,7 +194,7 @@
   transform: translateX(-50%);
 }
 
-.post .gallery > div {
+.gallery > div {
   display: flex;
   max-width: 45em;
   width: 100%;
@@ -202,15 +213,15 @@
   mix-blend-mode: screen;
 }
 
-.post .gallery div::-webkit-scrollbar-thumb {
+.gallery div::-webkit-scrollbar-thumb {
   background: hwb(180deg 0% 50% / 50%);
 }
 
-.post .gallery div::-webkit-scrollbar-thumb {
+.gallery div::-webkit-scrollbar-thumb {
   background: hwb(180deg 0% 50% / 50%);
 }
 
-.post .gallery div div {
+.gallery div div {
   width: 100%;
   height: 100%;
   scroll-snap-align: start;
@@ -220,17 +231,17 @@
   align-self: center;
 }
 
-.post .gallery div div:not(:last-child) {
+.gallery div div:not(:last-child) {
   padding-right: 10px;
 }
 
-.post .gallery div div img {
+.gallery div div img {
   display: block;
   max-width: 100%;
   max-height: 80vh;
 }
 
-.post .gallery span {
+.gallery span {
   font-family: 'Russell Square';
   line-height: calc(1.75em);
   display: block;
@@ -244,7 +255,7 @@
   box-shadow: 0 0 4px 2px black inset;
 }
 
-.post .audio {
+.audio {
   height: 7em;
   display: flex;
   position: relative;
@@ -254,7 +265,7 @@
   transform: translateX(-50%);
 }
 
-.post .audio span {
+.audio span {
   font-family: 'Russell Square';
   position: absolute;
   top: calc(0.75em + 2px);
@@ -268,7 +279,7 @@
   background: hwb(180deg 0% 50% / 33%);
 }
 
-.post .audio audio {
+.audio audio {
   background: repeating-linear-gradient(
     black 0px,
     black 2px,
@@ -283,19 +294,19 @@
   max-width: 500px;
 }
 
-.post .audio audio::-webkit-media-controls {
+.audio audio::-webkit-media-controls {
   background: transparent;
   border: hwb(180deg 0% 50% / 50%) 2px solid;
   border-radius: 1em;
 }
 
-.post .audio audio::-webkit-media-controls-enclosure {
+.audio audio::-webkit-media-controls-enclosure {
   background: transparent;
   filter: invert(1);
 }
 
-.post .audio audio::-webkit-media-controls-current-time-display,
-.post .audio audio::-webkit-media-controls-time-remaining-display {
+.audio audio::-webkit-media-controls-current-time-display,
+.audio audio::-webkit-media-controls-time-remaining-display {
   font-family: 'Russell Square';
   /* text-shadow: 0 0 4px hwb(0deg 0% 50% / 50%); */
 }
