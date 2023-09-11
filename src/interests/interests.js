@@ -149,19 +149,18 @@ var loadFunc = function () {
 
     if (fgImgs.includes(document.getElementById('starship'))) {
       // Starship
-      // Like Stark
-      var fgImg = document.getElementById('starship')
+      var fgImg = document.getElementById('scroll')
       // Down-in & Up-out & Down-out & Up-in
       if (
         scrollPosition >= viewportHeight * 4.5 - fgImg.offsetHeight / 2 &&
         scrollPosition <= viewportHeight * 4.5 + fgImg.offsetHeight * 2.5
       ) {
         var changeInPosition = scrollPosition / 5 - fgImg.offsetHeight
-        fgImg.style.top = -changeInPosition + 'px'
+        fgImg.style.transform = 'translateY(' + -changeInPosition + 'px)'
       }
       // Above
       else if (scrollPosition < viewportHeight * 4.5 - fgImg.offsetHeight / 2) {
-        fgImg.style.top = 0 + 'px'
+        fgImg.style.transform = 'translateY(0px)'
       }
     }
 
