@@ -152,6 +152,12 @@
   width: 100%;
 }
 
+#content date::before,
+.post date::before {
+  content: 'Updated: ';
+  color: grey;
+}
+
 #content date::after,
 .post date::after {
   content: '';
