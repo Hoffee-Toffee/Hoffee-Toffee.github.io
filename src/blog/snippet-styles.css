@@ -1,0 +1,126 @@
+/* Code-Input Compability */
+/* By WebCoder49 (Modified by Tristan Bulmer)*/
+/* Source Published on CSS-Tricks.com */
+
+.view_only .code-input_editing {
+  display: none;
+}
+
+.code-input_editing,
+.code-input_highlighting,
+.code-input_highlighting * {
+  /* Also add text styles to highlighing tokens */
+  font-family: monospace;
+}
+
+/* Move the textarea in front of the result */
+
+.code-input_editing {
+  z-index: 1;
+}
+.code-input_highlighting {
+  z-index: 0;
+}
+
+.code-input_editing,
+.code-input_highlighting {
+  white-space: pre-wrap; /* Allows textarea to scroll horizontally */
+}
+
+/* Syntax Highlighting from prism.js starts below, partly modified: */
+
+/* PrismJS 1.23.0
+https://prismjs.com/download.html#themes=prism-funky&languages=markup */
+/**
+ * prism.js Funky theme
+ * Based on Ã¢â‚¬Å“Polyfilling the gapsÃ¢â‚¬Â talk slides http://lea.verou.me/polyfilling-the-gaps/
+ * @author Lea Verou
+ */
+
+/* Code blocks */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata,
+.token.punctuation {
+  color: #5f5f5f;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #1a47ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin {
+  color: #b45d25;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.token.variable,
+.token.inserted {
+  color: #008a00;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #e01281;
+}
+
+.token.regex,
+.token.important {
+  color: #9b6400;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.deleted {
+  color: #e60b00;
+}
+
+/* Plugin styles: Diff Highlight */
+pre.diff-highlight.diff-highlight > code .token.deleted:not(.prefix),
+pre > code.diff-highlight.diff-highlight .token.deleted:not(.prefix) {
+  background-color: rgba(255, 0, 0, 0.3);
+  display: inline;
+}
+
+pre.diff-highlight.diff-highlight > code .token.inserted:not(.prefix),
+pre > code.diff-highlight.diff-highlight .token.inserted:not(.prefix) {
+  background-color: rgba(0, 255, 128, 0.3);
+  display: inline;
+}
+
+.code-input_editing {
+  margin-left: 1em !important;
+  width: calc(100% - 1em);
+  height: calc(100% - 1em) !important;
+}
+
+/* End of prism.js syntax highlighting*/

@@ -182,6 +182,13 @@
   padding: 1em;
 }
 
+#content code span.tab,
+.post code span.tab {
+  width: 1em;
+  display: inline-block;
+  height: 1em;
+}
+
 .gallery {
   background: repeating-linear-gradient(
     black 0px,

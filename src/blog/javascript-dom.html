@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>JavaScript DOM | Tristan Bulmer - Portfolio</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Add code snippet CSS and JS -->
+    <link rel="stylesheet" href="./snippet-styles.css" />
+    <script type="module" src="./prism.js"></script>
+    <script type="module" src="./snippet.js"></script>
+
+    <!-- Add common CSS and JS -->
+    <link rel="stylesheet" href="../common.css" />
+    <script type="module" src="../common.js"></script>
+
+    <!-- Add this page's CSS and JS -->
+    <link rel="stylesheet" href="../common-blog.css" />
+    <script type="module" src="blog.js"></script>
+  </head>
+
+  <body>
+    <div class="post">
+      <h1>JavaScript DOM</h1>
+      <subtitle>Document Object Model</subtitle>
+
+      <h2>Analogies</h2>
+      <p>
+        JavaScript is like the nervous and muscular systems of websites.
+        <br />
+        Without it, there are no changes to the static structure provided by the
+        HTML skeletal system.
+        <br />
+        <br />
+        JS code runs from the first line in the file down to the last.
+        <br />
+        Exceptions, of course, are for many loops, conditionals, and other
+        functions.
+        <br />
+        An analogy could be a daily routine, but you might do different things
+        on different days.
+        <br />
+        e.g. if Wednesday is your shopping day then you will need to take
+        shopping bags with you.
+        <code-input
+          lang="js"
+          value="let things = [...] // List of things to take in with you to work
+let today = new Date() // Gets the current date
+let weekday = today.getDay() // Gets the current day of the week as aninteger (Sun = 0, Mon = 1, ...)
+
+if (weekday == 3) { // If today is Wednesday, then...
+  things.push('Shopping Bags') // Add shopping bags to the list of things to take today
+  // This section will be skipped if it's not Wednesday.
+}"
+        ></code-input>
+      </p>
+
+      <h2>What is the 'Document Object Model'?</h2>
+      <p>
+        In JavaScript, the DOM allows you to access and manipulate HTML
+        elements.<br />
+        As the name suggests, you interact with it as an Object, using the same
+        syntax.<br />
+        <br />
+        Most notably, you can...
+      </p>
+      <ul>
+        <li>
+          Select and filter elements, such as the second child of the tenth
+          element with the class of 'cheese'
+          <code-input
+            lang="js"
+            value="let el = document.getElementsByClassName('cheese')[9].children[1]"
+          ></code-input>
+        </li>
+        <li>
+          Access and set the properties of elements, such as the value of an
+          input textbox
+          <code-input lang="js" value="let text = el.value"></code-input>
+        </li>
+        <li>
+          Capture events from elements, such as click events or keypresses
+          <code-input lang="js" value="el.onclick(someFunc)"></code-input>
+        </li>
+      </ul>
+
+      <h2>Arrays, Objects, and Functions</h2>
+      <h3>Arrays</h3>
+      <p>
+        Arrays are lists of data.<br />
+        They are zero-indexed, meaning the first entry is at position zero,
+        however, lengths start counting at one.<br />
+        They are actually a type of object, which can be important depending on
+        what you are doing.<br />
+        <br />
+        Arrays can contain all data types, e.g...
+        <code-input
+          lang="js"
+          value="let mixedArray = [
+  'Macaroni', // String
+  3.141592653589793, // Float (Number)
+  -4, // Integer (Number)
+  false, // Boolean
+  { ... }, // Object 
+  [ // Another Array
+    'Text',
+    true,
+    ...
+  ]
+]"
+        ></code-input>
+        Here are some common array methods.
+        <code-input
+          lang="js"
+          value="// From index
+let first = mixedArray[0] // Returns the zeroth item
+
+/* first: 'Macaroni' */
+
+// Filtering
+let everySecond = mixedArray.filter( (item, index) => {
+  // Function that returns true or false, with all 'true' items being in an array for the 'filtered' variable.
+
+  // This example returns only every second item, so needs to return true for every second item.
+  return index % 2
+})
+
+/* everySecond: [
+  3.141592653589793,
+  false,
+  [
+    'Text',
+    true,
+    ...
+  ]
+] */
+
+
+// Mapping
+let types = mixedArray.map( (item, index) => {
+  // Function that returns a value for each item, with these values being in an array for the 'mapped' variable.
+  // Note that if nothing returned then it will give the value 'undefined'
+
+  // This example returns the type of the item
+  return typeof item
+})
+
+/* types: [
+  'string',
+  'number',
+  'boolean',
+  'object',
+  'object' // Arrays are a type of object, use 'item.isArray()' to distinguish them
+] */"
+        ></code-input>
+      </p>
+
+      <h3>Objects</h3>
+      <p>
+        The main difference between arrays and objects is keys.<br />
+        Each property of an object has a key and a value, as opposed to arrays
+        which only have values.<br />
+        <br />
+        Objects can also contain all data types, e.g...
+        <code-input
+          lang="js"
+          value="let mixedObject = {
+  forename: 'Vince', // String
+  surname: 'Wright', // String
+  age: 36, // Integer (Number)
+  alive: true, // Boolean
+  children: [ ... ], // Array
+  cv: { ... } // Object 
+}"
+        ></code-input>
+        Here are some common object methods.
+        <code-input
+          lang="js"
+          value="// From key
+let fullName = mixedObject.forename + mixedObject['surname'] // Note that both methods are shown here, with the former being prefered, but the latter is great for using a string variable as the key
+
+/* fullName: 'Vince Wright' */
+
+// Getting all keys
+let keys = Object.keys(mixedObject)
+
+/* keys: [
+  'forename',
+  'surname',
+  'age',
+  'alive',
+  'children',
+  'cv'
+] */
+
+// Getting all values
+let values = Object.values(obj)
+
+/* values: [
+  'Vince',
+  'Wright',
+  36,
+  true,
+  [ ... ],
+  { ... }
+] */
+
+// Both 'keys' and 'values' can be filtered or mapped as arrays using the functions described in the array section.
+"
+        ></code-input>
+      </p>
+
+      <h3>Functions</h3>
+      <p>
+        Functions are blocks of code that can be called in your program.<br />
+        They are great in improving readability, reducing code, and most
+        importantly, allowing more complex interactions.<br />
+        <br />
+        The main two handy features of functions are parameters and returning.
+        <code-input
+          lang="js"
+          value="function combine(str1, str2) {
+  return `${str1} and ${str2}.`
+}
+
+// Calling the function
+let result = combine('Rock', 'roll')
+
+/* result: 'Rock and roll.' */"
+        >
+        </code-input>
+        Recursion is often a tough concept to explain, so I'll give a go using
+        the concept of a family tree.<br />
+        First, here is an example object of a person.<br />
+        This code is just for explaining, for a more practical way of doing
+        this, see
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes"
+          >classes</a
+        >.
+        <code-input
+          lang="js"
+          value="let martha = {
+  id: 2, // Used for referencing
+  name: 'Martha Greene', // The name of the person
+  parents: [
+    0, // ID of the parent's object
+    1,
+  ],
+  // Note that we don't need to list children as well since we can figure this with the parent info
+}"
+        >
+        </code-input>
+        In this example, imagine each person is in an array (people), with each
+        index matching it's ID.<br />
+        This way it is easier to follow.<br />
+        <br />
+        Getting parent objects is easy, as we just need to use the IDs on file
+        to get their objects.
+        <code-input
+          lang="js"
+          value="function getParents(child) {
+  return child.parents.map(
+    // Runs for each parent of the child
+    (ID) => people[ID] // Finds and returns this parent's object using their ID
+  )
+}"
+        >
+        </code-input>
+        Getting children requires checking all people, returning only those who
+        have this person as a parent.
+        <code-input
+          lang="js"
+          value="function getChildren(parent) {
+  return people.filter(
+    // Runs for each person, returning people whose check returns 'true'
+    (person) => person.parents.includes(parent.id) // Checks if this person's 'parents' property contains the parent's ID
+  )
+}"
+        >
+        </code-input>
+        Here comes the recursion, we'll start by defining some people to use.<br />
+        <code-input
+          lang="js"
+          value="let people = [
+  {
+    id: 0,
+    name: 'Arcturus Greene Sr.',
+    parents: [],
+  },
+  {
+    id: 1,
+    name: 'Charlotte Greene',
+    parents: [],
+  },
+  martha, // Object from before
+  {
+    id: 3,
+    name: 'Arcturus Greene Jr.',
+    parents: [
+      0, // Arcturus Sr.
+      1, // Charlotte
+    ],
+  },
+  {
+    id: 4,
+    name: 'Georgia Smith',
+    parents: [],
+  },
+  {
+    id: 5,
+    name: 'Adam Smith',
+    parents: [
+      3, // Arcturus Jr.
+      4, // Georgia
+    ],
+  },
+  {
+    id: 6,
+    name: 'Loretta Smith',
+    parents: [
+      3, // Arcturus
+      4, // Georgia
+    ],
+  },
+  {
+    id: 7,
+    name: 'Emma Stevens',
+    parents: [],
+  },
+  {
+    id: 8,
+    name: 'Mack Stevens-Smith',
+    parents: [
+      5, // Adam
+      7, // Emma
+    ],
+  },
+]"
+        >
+        </code-input>
+        This looks a bit ugly, lets see if we can use the 'parents' and
+        'children' functions to show the bloodline of a person.<br />
+        It will use 'parents' to show only parents going up, and the same with
+        'children' going down<br />
+        In this first version, partners will not be shown.
+        <code-input
+          lang="js"
+          value="function bloodline(person, dir = 0) {
+  // This function will log the current entry AFTER all it's parents have been done and BEFORE its children.
+  // If no value for 'dir' is provided, then it defaults as 0 (middle)
+  // -1 is going backward into parents while 1 is forward into children
+
+  let tree = [] // Each entry will be a generation
+  let obj = {} // Only used for the final return stage
+
+  // If checking up (negative or zero)
+  if (dir <= 0) {
+    let parents = getParents(person) // Get the ones to be above it, in other words, it's parents
+    let above = []
+
+    // To get to the top of the chain, you must get the parent-bloodline of each parent
+    // The ones at the top won't do anything here as they have no parents
+    parents.forEach((parent) => {
+      above = above.concat(bloodline(parent, -1))
+
+      // Any array within it should be removed and added to the tree
+      above = above.filter((line) => {
+        if (!Array.isArray(line)) return true
+        tree.push(line)
+      })
+    })
+
+    // Add to the tree (if anything was added)
+    if (above.length) tree.push(above)
+  }
+
+  // Now that the bloodline before you is done, you can insert yourself here
+  tree.push(person.name)
+
+  // If checking down (positive or zero)
+  if (dir >= 0) {
+    let children = getChildren(person) // Get the ones to be under it, in other words, it's children
+    let below = []
+    let final = []
+
+    // To get to the bottom of the chain, you must get the child-bloodline of each child
+    // The ones at the bottom won't do anything here as they have no children
+    children.forEach((child) => {
+      below = below.concat(bloodline(child, 1))
+
+      // Any array within it should be removed and added to the tree last
+      below = below.filter((line) => {
+        if (!Array.isArray(line)) return true
+        final.push(line)
+      })
+    })
+
+    // Add to the tree (if anything was added)
+    if (below.length) tree.push(below)
+
+    // Add any lower levels to the tree (if anything was added)
+    if (final.length) tree = tree.concat(final)
+  }
+
+  // Final processing if 'dir' is 0
+  if (dir == 0) {
+    // Get the index of the center, will be the only string as all others are arrays of their generations
+    let center = tree.findIndex((gen) => !Array.isArray(gen))
+
+    // Create a property for each array element
+    obj = Object.fromEntries(tree.map((gen, index) => [title((index - center)), gen]))
+    return obj
+  }
+
+  return tree
+}
+
+function title(num) {
+  // Converts each level to a string
+  // E.G.
+
+  // -5: ...
+  // -4: great_great_grandparents
+  // -3: great_grandparents
+  // -2: grandparents
+  // -1: parents
+  // 0: you
+  // 1: children
+  // 2: grandchildren
+  // 3: great_grandchildren
+  // 4: great_great_grandchildren
+  // 5: ...
+
+  
+  if (num == 0) return 'you'
+
+  let msg = num > 0 ? 'children' : 'parents' // Puts 'children' at the end if positive, and 'parents' if not
+
+  num = Math.abs(num) // How many layers away from the center we are
+
+  if (num > 1) msg = 'grand' + msg // Add 'grand' if over one away
+
+  if (num > 2) msg = 'great-'.repeat(num - 2) + msg // Add 'great-' to the start as many times as needed
+
+  return msg
+}
+
+console.log(JSON.stringify(bloodline(people[0]), null, ' ')) // Arcturus Sr.
+console.log(JSON.stringify(bloodline(people[2]), null, ' ')) // Martha
+console.log(JSON.stringify(bloodline(people[3]), null, ' ')) // Arcturus Jr.
+console.log(JSON.stringify(bloodline(people[8]), null, ' ')) // Mack
+
+// Sample output
+// {
+//   parents: ['Arcturus Sr.', 'Charlotte'],
+//   you: ['Arcturus Jr.'],
+//   children: ['Adam', 'Loretta'],
+//   grandchildren: ['Mack']
+// }"
+        >
+        </code-input>
+      </p>
+
+      <date>22 September 2023</date>
+    </div>
+  </body>
+</html>

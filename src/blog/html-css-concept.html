@@ -7,6 +7,11 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <!-- Add code snippet CSS and JS -->
+    <link rel="stylesheet" href="./snippet-styles.css" />
+    <script type="module" src="./prism.js"></script>
+    <script type="module" src="./snippet.js"></script>
+
     <!-- Add common CSS and JS -->
     <link rel="stylesheet" href="../common.css" />
     <script type="module" src="../common.js"></script>
@@ -66,7 +71,14 @@
         <br />
         <br />
         For example, if you do...
-        <code>#absolute { position: absolute; top: 5em; right: 0; }</code>
+        <code-input
+          lang="css"
+          value="#absolute {
+  position: absolute;
+  top: 5em;
+  right: 0;
+}"
+        ></code-input>
         ...then it will place the element 5em from the top of the bounds
         (nearest parent that fits the conditions above), which is the page in
         this context.
@@ -87,7 +99,14 @@
         <br />
         <br />
         For example, if you do...
-        <code>#fixed { position: fixed; bottom: 50vh; right: 0; }</code>
+        <code-input
+          lang="css"
+          value="#fixed {
+  position: fixed;
+  bottom: 50vh;
+  right: 0;
+}"
+        ></code-input>
         ...then it will place the element on the screen, halfway from the
         bottom.
         <span id="fixed" class="box">Fixed: (Relative to screen)</span>
@@ -105,7 +124,14 @@
         <br />
         <br />
         For example, if you do...
-        <code>#relative { position: relative; top: 2em; right: 0; }</code>
+        <code-input
+          lang="css"
+          value="#relative {
+  position: relative;
+  top: 2em;
+  right: 0;
+}"
+        ></code-input>
         ...then it will shift the element down by this amount.
         <br />
         This is compared to it's original position.
