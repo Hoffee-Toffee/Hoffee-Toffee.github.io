@@ -15,73 +15,75 @@ firebase.initializeApp(firebaseConfig)
 const db = firebase.firestore()
 const auth = firebase.auth()
 
-auth.onAuthStateChanged(async () => {
-  const doc = await db.collection('data').doc('sneezeData').get()
-  const sneezeData = JSON.parse(doc.data().data)
+db.collection('data')
+  .doc('sneezeData')
+  .onSnapshot(async () => {
+    const doc = await db.collection('data').doc('sneezeData').get()
+    const sneezeData = JSON.parse(doc.data().data)
 
-  const { count, updated } = sneezeData
+    const { count, updated } = sneezeData
 
-  // count
-  set('count', count.toLocaleString())
+    // count
+    set('count', count.toLocaleString())
 
-  // started
-  const started = new Date('December 31, 2022 11:59 PM GMT+1300 (New Zealand Daylight Time')
-  set('start', started.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-  }))
+    // started
+    const started = new Date('December 31, 2022 11:59 PM GMT+1300 (New Zealand Daylight Time')
+    set('start', started.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    }))
 
-  // updated
-  const updatedDate = new Date(updated);
-  set('updated', updatedDate.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-  }))
+    // updated
+    const updatedDate = new Date(updated);
+    set('updated', updatedDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    }))
 
-  // length of record in ms
-  const span = updatedDate - started
+    // length of record in ms
+    const span = updatedDate - started
 
-  // daily
-  // Divide count by difference in ms of current and start, (ms / (1000*60*60*24)) to get as days
-  const daily = count / (span / (1000 * 60 * 60 * 24))
-  set('daily', daily.toLocaleString())
+    // daily
+    // Divide count by difference in ms of current and start, (ms / (1000*60*60*24)) to get as days
+    const daily = count / (span / (1000 * 60 * 60 * 24))
+    set('daily', daily.toLocaleString())
 
-  // interval
-  const intervalRaw = span / count
-  console.log(intervalRaw)
-  const interval = formatRelativeDate(intervalRaw, 0)
-  console.log(interval)
-  set('interval', interval)
+    // interval
+    const intervalRaw = span / count
+    console.log(intervalRaw)
+    const interval = formatRelativeDate(intervalRaw, 0)
+    console.log(interval)
+    set('interval', interval)
 
-  // thousand
-  const thousandMS = nextMilestone(1, count)
-  set('thousandMS', thousandMS.toLocaleString())
+    // thousand
+    const thousandMS = nextMilestone(1, count)
+    set('thousandMS', thousandMS.toLocaleString())
 
-  const thousand = thousandMS / (count / span) - span + updatedDate.getTime()
-  set('thousand', formatRelativeDate(thousand, updatedDate))
+    const thousand = thousandMS / (count / span) - span + updatedDate.getTime()
+    set('thousand', formatRelativeDate(thousand, updatedDate))
 
-  // tenThousand
-  const tenThousandMS = nextMilestone(2, count)
-  set("tenThousandMS", tenThousandMS.toLocaleString())
+    // tenThousand
+    const tenThousandMS = nextMilestone(2, count)
+    set("tenThousandMS", tenThousandMS.toLocaleString())
 
-  const tenThousand = tenThousandMS / (count / span) - span + updatedDate.getTime()
-  set('tenThousand', formatRelativeDate(tenThousand, updatedDate))
+    const tenThousand = tenThousandMS / (count / span) - span + updatedDate.getTime()
+    set('tenThousand', formatRelativeDate(tenThousand, updatedDate))
 
-  // hunThousand
-  const hunThousandMS = nextMilestone(3, count)
-  set("hunThousandMS", hunThousandMS.toLocaleString())
+    // hunThousand
+    const hunThousandMS = nextMilestone(3, count)
+    set("hunThousandMS", hunThousandMS.toLocaleString())
 
-  const hunThousand = hunThousandMS / (count / span) - span + updatedDate.getTime()
-  set('hunThousand', formatRelativeDate(hunThousand, updatedDate))
-})
+    const hunThousand = hunThousandMS / (count / span) - span + updatedDate.getTime()
+    set('hunThousand', formatRelativeDate(hunThousand, updatedDate))
+  })
 
 function set(id, value) {
   document.getElementById(id).innerText = value
