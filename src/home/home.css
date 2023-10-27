@@ -1,0 +1,29 @@
+/* ===== ------------------ ===== */
+/* =====   SNEEZE COUNTER   ===== */
+/* ===== ------------------ ===== */
+
+#sneezeBox {
+  top: -3em;
+  padding-top: 1em;
+  position: relative;
+}
+
+.card {
+  margin: 2em;
+  padding: 1em;
+  border: solid white 0.1em;
+  text-align: center;
+  border-radius: 1em;
+  height: -webkit-fill-available;
+}
+
+.card b {
+  color: var(--color-blue-lighter);
+}
+
+.card #count {
+  color: var(--color-green-lightest);
+}
+.card .date {
+  color: var(--color-orange-dark);
+}
