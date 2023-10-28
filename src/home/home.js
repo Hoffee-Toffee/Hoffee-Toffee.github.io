@@ -112,9 +112,11 @@ function formatRelativeDate(estimate, start) {
     return estimateDate.getFullYear().toString();
   } else if (years >= 2) { // Just show the estimated month and year if a couple of years or so in the future
     return estimateDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
-  }
-  else if (days >= 7) { // Just show the month and day if a week or so in the future (plus the year to avoid confusion)
+  } else if (days >= 7) { // Just show the month and day if a week or so in the future (plus the year to avoid confusion)
     return estimateDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  } else if (days >= 1) { // Just show the days and hours remaining if over a day in the future
+    hours %= 24
+    return `${days} ${days === 1 ? 'day' : 'days'}${hours > 0 ? ` and ${hours} ${hours === 1 ? 'hour' : 'hours'}` : ''}`;
   } else if (hours >= 1) { // Just show the hours and minutes remaining if an hour or so in the future
     minutes %= 60
     return `${hours} ${hours === 1 ? 'hour' : 'hours'}${minutes > 0 ? ` and ${minutes} ${minutes === 1 ? 'minute' : 'minutes'}` : ''}`;
