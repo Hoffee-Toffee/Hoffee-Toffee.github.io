@@ -38,25 +38,15 @@ function sneezeCalc() {
 
   // started
   const started = new Date('December 31, 2022 11:59 PM GMT+1300 (New Zealand Daylight Time')
-  set('start', started.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-  }))
+  set('start', formatFullDate(started))
 
   // updated
   const updatedDate = new Date(updated);
-  set('updated', updatedDate.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-  }))
+  set('updated', formatFullDate(updatedDate))
+
+  // now
+  const now = new Date()
+  set('now', formatFullDate(now))
 
   // Ms since count start
   const msAgo = new Date() - started
@@ -96,6 +86,17 @@ function sneezeCalc() {
 function set(id, value) {
   let el = document.getElementById(id)
   if (el.innerText !== value) el.innerText = value
+}
+
+function formatFullDate(date) {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  })
 }
 
 function formatRelativeDate(estimate, start) {
