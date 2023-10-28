@@ -21,69 +21,77 @@ db.collection('data')
     const doc = await db.collection('data').doc('sneezeData').get()
     const sneezeData = JSON.parse(doc.data().data)
 
-    const { count, updated } = sneezeData
+    let start = false
 
-    // count
-    set('count', count.toLocaleString())
+    if (window['sneezeData'] == undefined) start = true
 
-    // started
-    const started = new Date('December 31, 2022 11:59 PM GMT+1300 (New Zealand Daylight Time')
-    set('start', started.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      hour12: true,
-    }))
+    window['sneezeData'] = sneezeData
 
-    // updated
-    const updatedDate = new Date(updated);
-    set('updated', updatedDate.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      hour12: true,
-    }))
-
-    // length of record in ms
-    const span = updatedDate - started
-
-    // daily
-    // Divide count by difference in ms of current and start, (ms / (1000*60*60*24)) to get as days
-    const daily = count / (span / (1000 * 60 * 60 * 24))
-    set('daily', daily.toLocaleString())
-
-    // interval
-    const intervalRaw = span / count
-    console.log(intervalRaw)
-    const interval = formatRelativeDate(intervalRaw, 0)
-    console.log(interval)
-    set('interval', interval)
-
-    // thousand
-    const thousandMS = nextMilestone(1, count)
-    set('thousandMS', thousandMS.toLocaleString())
-
-    const thousand = thousandMS / (count / span) - span + updatedDate.getTime()
-    set('thousand', formatRelativeDate(thousand, updatedDate))
-
-    // tenThousand
-    const tenThousandMS = nextMilestone(2, count)
-    set("tenThousandMS", tenThousandMS.toLocaleString())
-
-    const tenThousand = tenThousandMS / (count / span) - span + updatedDate.getTime()
-    set('tenThousand', formatRelativeDate(tenThousand, updatedDate))
-
-    // hunThousand
-    const hunThousandMS = nextMilestone(3, count)
-    set("hunThousandMS", hunThousandMS.toLocaleString())
-
-    const hunThousand = hunThousandMS / (count / span) - span + updatedDate.getTime()
-    set('hunThousand', formatRelativeDate(hunThousand, updatedDate))
+    if (start) setInterval(sneezeCalc, 800)
   })
+
+function sneezeCalc() {
+  const { count, updated } = window['sneezeData']
+
+  // count
+  set('count', count.toLocaleString())
+
+  // started
+  const started = new Date('December 31, 2022 11:59 PM GMT+1300 (New Zealand Daylight Time')
+  set('start', started.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  }))
+
+  // updated
+  const updatedDate = new Date(updated);
+  set('updated', updatedDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  }))
+
+  // Ms since count start
+  const msAgo = new Date() - started
+
+  // daily
+  // Divide count by difference in ms of current and start, (ms / (1000*60*60*24)) to get as days
+  const daily = count / (msAgo / (1000 * 60 * 60 * 24))
+  set('daily', daily.toLocaleString())
+
+  // interval
+  const intervalRaw = msAgo / count
+  const interval = formatRelativeDate(intervalRaw, 0)
+  set('interval', interval)
+
+  // thousand
+  const thousandMS = nextMilestone(1, count)
+  set('thousandMS', thousandMS.toLocaleString())
+
+  const thousand = thousandMS / (count / msAgo) - msAgo + updatedDate.getTime()
+  set('thousand', formatRelativeDate(thousand, updatedDate))
+
+  // tenThousand
+  const tenThousandMS = nextMilestone(2, count)
+  set("tenThousandMS", tenThousandMS.toLocaleString())
+
+  const tenThousand = tenThousandMS / (count / msAgo) - msAgo + updatedDate.getTime()
+  set('tenThousand', formatRelativeDate(tenThousand, updatedDate))
+
+  // hunThousand
+  const hunThousandMS = nextMilestone(3, count)
+  set("hunThousandMS", hunThousandMS.toLocaleString())
+
+  const hunThousand = hunThousandMS / (count / msAgo) - msAgo + updatedDate.getTime()
+  set('hunThousand', formatRelativeDate(hunThousand, updatedDate))
+}
 
 function set(id, value) {
   document.getElementById(id).innerText = value
@@ -102,7 +110,10 @@ function formatRelativeDate(estimate, start) {
 
   if (years >= 10) { // Just show the estimated year if a decade or so in the future
     return estimateDate.getFullYear().toString();
-  } else if (days >= 7) { // Just show the month and day if a week or so in the future (plus the year to avoid confusion)
+  } else if (years >= 2) { // Just show the estimated month and year if a couple of years or so in the future
+    return estimateDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+  }
+  else if (days >= 7) { // Just show the month and day if a week or so in the future (plus the year to avoid confusion)
     return estimateDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   } else if (hours >= 1) { // Just show the hours and minutes remaining if an hour or so in the future
     minutes %= 60
