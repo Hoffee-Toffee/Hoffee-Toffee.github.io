@@ -94,7 +94,8 @@ function sneezeCalc() {
 }
 
 function set(id, value) {
-  document.getElementById(id).innerText = value
+  let el = document.getElementById(id)
+  if (el.innerText !== value) el.innerText = value
 }
 
 function formatRelativeDate(estimate, start) {
