@@ -59,18 +59,6 @@ db.collection('data')
 
       squares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
     }
-
-    // Add colors
-    squares.insertAdjacentHTML('beforeend', `<div class="squares">
-      <li data-level="2"></li>
-      <li data-level="3"></li>
-      <li data-level="4"></li>
-      <li data-level="5"></li>
-      <li data-level="6"></li>
-      <li data-level="7"></li>
-      <li data-level="8"></li>
-    </div>`);
-
   })
 
 function count2Level(count) {
