@@ -28,7 +28,43 @@ db.collection('data')
     window['sneezeData'] = sneezeData
 
     if (start) setInterval(sneezeCalc, 800)
+
+    let yearStart = new Date(new Date().getFullYear().toString())
+    let offset = yearStart.getDay()
+
+    const squares = document.querySelector('.squares');
+
+    squares.innerHTML = ""
+
+    for (var i = 1; i < 372; i++) {
+      let level = 0
+      let count = 0
+
+      // Get the date for this block
+      let thisDate = new Date(yearStart)
+      thisDate.setMonth(0, i - offset)
+
+      if (thisDate.getFullYear() == yearStart.getFullYear()) { // If in the year
+        // Set to '4' if sneeze count for that date
+        let thisData = sneezeData.calendar[thisDate.toLocaleDateString('en-NZ')]
+        count = thisData ? thisData.count : 0
+        level = count2Level(count)
+      }
+
+      squares.insertAdjacentHTML('beforeend', `<li title="${thisDate.toDateString()} - ${count} sneeze${count == 1 ? "" : "s"}" data-level="${level}"></li>`);
+    }
   })
+
+function count2Level(count) {
+  if (count < 1) return 1
+  if (count < 3) return 2
+  if (count < 6) return 3
+  if (count < 10) return 4
+  if (count < 15) return 5
+  if (count < 21) return 6
+  if (count < 30) return 7
+  return 8
+}
 
 function sneezeCalc() {
   const { count, updated } = window['sneezeData']
