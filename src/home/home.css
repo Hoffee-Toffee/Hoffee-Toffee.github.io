@@ -139,6 +139,19 @@
   visibility: hidden;
 }
 
+.squares li.unconfirmed {
+  background: linear-gradient(
+    45deg,
+    transparent,
+    transparent calc(50% - 1px),
+    #aaa calc(50% - 1px),
+    #aaa calc(50% + 1px),
+    transparent calc(50% + 1px),
+    transparent 100%
+  );
+  background-blend-mode: multiply;
+}
+
 .squares li[data-level='0'] {
   background-color: black;
 }
@@ -160,17 +173,17 @@
 }
 
 .squares li[data-level='5'] {
-  background-color: #080;
+  background-color: #282;
 }
 
 .squares li[data-level='6'] {
-  background-color: #0a0;
+  background-color: #4a4;
 }
 
 .squares li[data-level='7'] {
-  background-color: #0c0;
+  background-color: #7c7;
 }
 
 .squares li[data-level='8'] {
-  background-color: #0e0;
+  background-color: #bfb;
 }

@@ -29,7 +29,8 @@ db.collection('data')
 
     if (start) setInterval(sneezeCalc, 800)
 
-    let yearStart = new Date(new Date().getFullYear().toString())
+    let today = new Date()
+    let yearStart = new Date(today.getFullYear().toString())
     let offset = yearStart.getDay()
 
     const squares = document.querySelector('.squares');
@@ -43,16 +44,33 @@ db.collection('data')
       // Get the date for this block
       let thisDate = new Date(yearStart)
       thisDate.setMonth(0, i - offset)
+      let thisData = undefined
+      let classes = []
 
       if (thisDate.getFullYear() == yearStart.getFullYear()) { // If in the year
         // Set to '4' if sneeze count for that date
-        let thisData = sneezeData.calendar[thisDate.toLocaleDateString('en-NZ')]
+        thisData = sneezeData.calendar[thisDate.toLocaleDateString('en-NZ')]
         count = thisData ? thisData.count : 0
         level = count2Level(count)
+        if (!thisData || thisData.confirmed == false) classes.push('unconfirmed')
       }
 
-      squares.insertAdjacentHTML('beforeend', `<li title="${thisDate.toDateString()} - ${count} sneeze${count == 1 ? "" : "s"}" data-level="${level}"></li>`);
+      let title = (thisData) ? `${count} sneeze${count == 1 ? "" : "s"}${thisData.confirmed ? '' : ' (unconfirmed)'}` : "No record"
+
+      squares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
     }
+
+    // Add colors
+    squares.insertAdjacentHTML('beforeend', `<div class="squares">
+      <li data-level="2"></li>
+      <li data-level="3"></li>
+      <li data-level="4"></li>
+      <li data-level="5"></li>
+      <li data-level="6"></li>
+      <li data-level="7"></li>
+      <li data-level="8"></li>
+    </div>`);
+
   })
 
 function count2Level(count) {
