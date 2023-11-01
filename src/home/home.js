@@ -30,20 +30,27 @@ db.collection('data')
     if (start) setInterval(sneezeCalc, 800)
 
     let today = new Date()
+
     let yearStart = new Date(today.getFullYear().toString())
-    let offset = yearStart.getDay()
+    let yearOffset = yearStart.getDay()
 
-    const squares = document.querySelector('.squares');
+    let monthStart = new Date(today.toDateString().split(" ").filter((_, i) => i % 2).join(" "))
+    let monthOffset = monthStart.getDay()
 
-    squares.innerHTML = ""
+    const yearSquares = document.querySelector('.yearly .squares');
+    const monthSquares = document.querySelector('.monthly .squares');
 
+    yearSquares.innerHTML = ""
+    monthSquares.innerHTML = ""
+
+    // Yearly
     for (var i = 1; i < 372; i++) {
       let level = 0
       let count = 0
 
       // Get the date for this block
       let thisDate = new Date(yearStart)
-      thisDate.setMonth(0, i - offset)
+      thisDate.setMonth(0, i - yearOffset)
       let thisData = undefined
       let classes = []
 
@@ -57,7 +64,31 @@ db.collection('data')
 
       let title = (thisData) ? `${count} sneeze${count == 1 ? "" : "s"}${thisData.confirmed ? '' : ' (unconfirmed)'}` : "No record"
 
-      squares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
+      yearSquares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
+    }
+
+    // Monthly
+    for (var i = 1; i < 42; i++) {
+      let level = 0
+      let count = 0
+
+      // Get the date for this block
+      let thisDate = new Date(monthStart)
+      thisDate.setDate(i - monthOffset)
+      let thisData = undefined
+      let classes = []
+
+      if (thisDate.getMonth() == monthStart.getMonth()) { // If in the month
+        // Set to '4' if sneeze count for that date
+        thisData = sneezeData.calendar[thisDate.toLocaleDateString('en-NZ')]
+        count = thisData ? thisData.count : 0
+        level = count2Level(count)
+        if (!thisData || thisData.confirmed == false) classes.push('unconfirmed')
+      }
+
+      let title = (thisData) ? `${count} sneeze${count == 1 ? "" : "s"}${thisData.confirmed ? '' : ' (unconfirmed)'}` : "No record"
+
+      monthSquares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
     }
   })
 

@@ -187,3 +187,17 @@
 .squares li[data-level='8'] {
   background-color: #bfb;
 }
+
+.graph.yearly {
+  display: none;
+}
+
+@media screen and (min-width: 825px) {
+  .graph.yearly {
+    display: inline-grid;
+  }
+
+  .graph.monthly {
+    display: none;
+  }
+}
