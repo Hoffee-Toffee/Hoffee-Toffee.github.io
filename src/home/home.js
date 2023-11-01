@@ -28,68 +28,6 @@ db.collection('data')
     window['sneezeData'] = sneezeData
 
     if (start) setInterval(sneezeCalc, 800)
-
-    let today = new Date()
-
-    let yearStart = new Date(today.getFullYear().toString())
-    let yearOffset = yearStart.getDay()
-
-    let monthStart = new Date(today.toDateString().split(" ").filter((_, i) => i % 2).join(" "))
-    let monthOffset = monthStart.getDay()
-
-    const yearSquares = document.querySelector('.yearly .squares');
-    const monthSquares = document.querySelector('.monthly .squares');
-
-    yearSquares.innerHTML = ""
-    monthSquares.innerHTML = ""
-
-    // Yearly
-    for (var i = 1; i < 372; i++) {
-      let level = 0
-      let count = 0
-
-      // Get the date for this block
-      let thisDate = new Date(yearStart)
-      thisDate.setMonth(0, i - yearOffset)
-      let thisData = undefined
-      let classes = []
-
-      if (thisDate.getFullYear() == yearStart.getFullYear()) { // If in the year
-        // Set to '4' if sneeze count for that date
-        thisData = sneezeData.calendar[thisDate.toLocaleDateString('en-NZ')]
-        count = thisData ? thisData.count : 0
-        level = count2Level(count)
-        if (!thisData || thisData.confirmed == false) classes.push('unconfirmed')
-      }
-
-      let title = (thisData) ? `${count} sneeze${count == 1 ? "" : "s"}${thisData.confirmed ? '' : ' (unconfirmed)'}` : "No record"
-
-      yearSquares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
-    }
-
-    // Monthly
-    for (var i = 1; i < 42; i++) {
-      let level = 0
-      let count = 0
-
-      // Get the date for this block
-      let thisDate = new Date(monthStart)
-      thisDate.setDate(i - monthOffset)
-      let thisData = undefined
-      let classes = []
-
-      if (thisDate.getMonth() == monthStart.getMonth()) { // If in the month
-        // Set to '4' if sneeze count for that date
-        thisData = sneezeData.calendar[thisDate.toLocaleDateString('en-NZ')]
-        count = thisData ? thisData.count : 0
-        level = count2Level(count)
-        if (!thisData || thisData.confirmed == false) classes.push('unconfirmed')
-      }
-
-      let title = (thisData) ? `${count} sneeze${count == 1 ? "" : "s"}${thisData.confirmed ? '' : ' (unconfirmed)'}` : "No record"
-
-      monthSquares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
-    }
   })
 
 function count2Level(count) {
@@ -103,8 +41,14 @@ function count2Level(count) {
   return 8
 }
 
-function sneezeCalc() {
+async function sneezeCalc() {
   const { count, updated } = window['sneezeData']
+
+  // setup?
+  if (window.page !== window.prevPage || window.prevPage == undefined) {
+    await setup()
+    window.prevPage = window.page
+  }
 
   // count
   set('count', count.toLocaleString())
@@ -208,4 +152,109 @@ function nextMilestone(level, count) {
   let round = Math.ceil(count / milestone) * milestone
 
   return round == count ? count + milestone : round
+}
+
+function calendarChange(event) {
+  window.page = new Date(event.target.title)
+}
+
+async function setup() {
+  // Get first and last entry to get the bounds
+  let firstEntry = Object.keys(sneezeData.calendar)[0]
+  let lastEntry = Object.keys(sneezeData.calendar)[Object.keys(sneezeData.calendar).length - 1]
+
+  // Get / Set which page to be on
+  let monthStart = window.page
+
+  if (!monthStart) {
+    let today = new Date()
+    monthStart = new Date(today.toDateString().split(" ").filter((_, i) => i % 2).join(" "))
+
+    window.page = monthStart
+  }
+
+  let yearStart = new Date(monthStart.getFullYear().toString())
+
+  let yearOffset = yearStart.getDay()
+  let monthOffset = monthStart.getDay()
+
+  const yearSquares = document.querySelector('.yearly .squares');
+  const monthSquares = document.querySelector('.monthly .squares');
+
+  // Clear squares
+  yearSquares.innerHTML = ""
+  monthSquares.innerHTML = ""
+
+  // Set names check if buttons should be toggled
+  const yearlySwitch = document.querySelector('.yearly .switch');
+  const monthlySwitch = document.querySelector('.monthly .switch');
+
+  yearlySwitch.children[0].title = `${yearStart.getFullYear() - 1}`
+  yearlySwitch.children[1].innerHTML = yearStart.getFullYear()
+  yearlySwitch.children[2].title = `${yearStart.getFullYear() + 1}`
+
+  // Loop over the switch anchors, giving them an onclick function
+  document.querySelectorAll('.switch a').forEach(tag => tag.addEventListener('click', calendarChange))
+
+  monthStart.setMonth(monthStart.getMonth() - 1)
+
+  monthlySwitch.children[0].title = `${monthStart.toDateString().split(" ").filter((_, i) => i % 2).join(" ")}`
+
+  monthStart.setMonth(monthStart.getMonth() + 1)
+
+  monthlySwitch.children[1].innerHTML = `${monthStart.toDateString().split(" ").filter((_, i) => i % 2).join(" ")}`
+
+  monthStart.setMonth(monthStart.getMonth() + 1)
+
+  monthlySwitch.children[2].title = `${monthStart.toDateString().split(" ").filter((_, i) => i % 2).join(" ")}`
+
+  monthStart.setMonth(monthStart.getMonth() - 1)
+
+  // Yearly
+  for (var i = 1; i < 372; i++) {
+    let level = 0
+    let count = 0
+
+    // Get the date for this block
+    let thisDate = new Date(yearStart)
+    thisDate.setMonth(0, i - yearOffset)
+    let thisData = undefined
+    let classes = []
+
+    if (thisDate.getFullYear() == yearStart.getFullYear()) { // If in the year
+      // Set to '4' if sneeze count for that date
+      thisData = sneezeData.calendar[thisDate.toLocaleDateString('en-NZ')]
+      count = thisData ? thisData.count : 0
+      level = count2Level(count)
+      if (!thisData || thisData.confirmed == false) classes.push('unconfirmed')
+    }
+
+    let title = (thisData) ? `${count} sneeze${count == 1 ? "" : "s"}${thisData.confirmed ? '' : ' (unconfirmed)'}` : "No record"
+
+    yearSquares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
+  }
+
+  // Monthly
+  for (var i = 1; i < 42; i++) {
+    let level = 0
+    let count = 0
+
+    // Get the date for this block
+    let thisDate = new Date(monthStart)
+    thisDate.setDate(i - monthOffset)
+    let thisData = undefined
+    let classes = []
+
+    if (thisDate.getMonth() == monthStart.getMonth()) { // If in the month
+      // Set to '4' if sneeze count for that date
+      thisData = sneezeData.calendar[thisDate.toLocaleDateString('en-NZ')]
+      count = thisData ? thisData.count : 0
+      level = count2Level(count)
+      if (!thisData || thisData.confirmed == false) classes.push('unconfirmed')
+    }
+
+    let title = (thisData) ? `${count} sneeze${count == 1 ? "" : "s"}${thisData.confirmed ? '' : ' (unconfirmed)'}` : "No record"
+
+    monthSquares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
+  }
 }
