@@ -124,6 +124,11 @@
   grid-auto-columns: var(--square-size);
 }
 
+.squares li {
+  border: 1px solid transparent;
+  transition: 0s;
+}
+
 .graph {
   padding: 20px;
   border: 1px white solid;
@@ -190,6 +195,34 @@
 
 .graph.yearly {
   display: none;
+}
+
+.squares li:not([data-level='0']):hover {
+  border: 1px solid white;
+  transition: border-color 0.25s 0.1s;
+}
+
+.squares li:not([data-level='0'])::after {
+  content: attr(date) '\a'attr(record) '\a'attr(extra);
+  position: absolute;
+  line-height: 1.2em;
+  pointer-events: none;
+  background: var(--color-blue-darkest);
+  font-size: smaller;
+  padding: 0.5em;
+  border: 1px solid white;
+  white-space-collapse: break-spaces;
+  width: max-content;
+  opacity: 0;
+  margin-top: 1em;
+  transform: translateX(-50%);
+}
+
+.squares li:not([data-level='0']):hover::after {
+  opacity: 1;
+  margin-top: 1.5em;
+
+  transition: 0.25s 0.1s;
 }
 
 @media screen and (min-width: 825px) {

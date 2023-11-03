@@ -229,9 +229,7 @@ async function setup() {
       if (!thisData || thisData.confirmed == false) classes.push('unconfirmed')
     }
 
-    let title = (thisData) ? `${count} sneeze${count == 1 ? "" : "s"}${thisData.confirmed ? '' : ' (unconfirmed)'}` : "No record"
-
-    yearSquares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" title="${thisDate.toDateString()} - ${title}" data-level="${level}"></li>`);
+    yearSquares.insertAdjacentHTML('beforeend', `<li class="${classes.join(" ")}" date="${thisDate.toDateString()}" record="${(thisData) ? `${count} sneeze${count == 1 ? "" : "s"}` : "No record"}" extra="${(thisData && thisData.count > 0 && !thisData.confirmed) ? "(Unconfirmed)" : ""}"data-level="${level}"></li>`);
   }
 
   // Monthly
