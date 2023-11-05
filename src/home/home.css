@@ -125,6 +125,7 @@
 }
 
 .squares li {
+  outline: 1px solid transparent;
   border: 1px solid transparent;
   transition: 0s;
 }
@@ -198,8 +199,9 @@
 }
 
 .squares li:not([data-level='0']):hover {
-  border: 1px solid white;
-  transition: border-color 0.25s 0.1s;
+  border: 1px solid black;
+  outline: 1px solid white;
+  transition: border-color 0.25s 0.1s outline-color 0.25s 0.1s;
 }
 
 .squares li:not([data-level='0'])::after {
@@ -221,8 +223,42 @@
 .squares li:not([data-level='0']):hover::after {
   opacity: 1;
   margin-top: 1.5em;
-
   transition: 0.25s 0.1s;
+}
+
+.key .squares {
+  list-style: none;
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+
+.key .squares li {
+  height: var(--square-size);
+  width: var(--square-size);
+}
+
+.key .squares::before,
+.key .squares::after {
+  font-size: xx-small;
+  line-height: 1.5em;
+}
+
+.key .squares::before {
+  content: 'Less';
+}
+
+.key .squares::after {
+  content: 'More';
+}
+
+.key .squares li::after {
+  content: attr(count) ' sneezes';
+}
+
+.key p {
+  font-size: xx-small;
+  color: grey;
 }
 
 @media screen and (min-width: 825px) {
