@@ -23,9 +23,15 @@ db.collection('data')
 
     let start = false
 
-    if (window['sneezeData'] == undefined) start = true
-
+    let old = window['sneezeData']
     window['sneezeData'] = sneezeData
+
+    if (old == undefined) {
+      start = true
+    }
+    else {
+      setup()
+    }
 
     if (start) setInterval(sneezeCalc, 800)
   })
