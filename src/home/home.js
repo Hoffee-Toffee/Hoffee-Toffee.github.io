@@ -31,9 +31,10 @@ db.collection('data')
     }
     else {
       setup()
+      sneezeCalc()
     }
 
-    if (start) setInterval(sneezeCalc, 800)
+    if (start) setInterval(sneezeCalc, 60000)
   })
 
 function count2Level(count) {
