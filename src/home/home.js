@@ -29,10 +29,9 @@ db.collection('data')
     if (old == undefined) {
       start = true
     }
-    else {
-      setup()
-      sneezeCalc()
-    }
+
+    setup()
+    sneezeCalc()
 
     if (start) setInterval(sneezeCalc, 60000)
   })
@@ -163,6 +162,7 @@ function nextMilestone(level, count) {
 
 function calendarChange(event) {
   window.page = new Date(event.target.title)
+  setup()
 }
 
 async function setup() {
